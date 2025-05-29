@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارش تحلیل سلامت</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: backgroundShift 15s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            25% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+            50% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+            75% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            animation: slideUp 1s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .flower {
+            font-size: 2rem;
+            display: inline-block;
+            animation: rotate 4s linear infinite;
+            margin: 0 10px;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .content {
+            padding: 40px;
+            line-height: 2;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #f8f9ff, #e8ecff);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: slideLight 3s infinite;
+        }
+        
+        @keyframes slideLight {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .icon {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .section-content {
+            color: #2d3748;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(168, 237, 234, 0.5); }
+            to { box-shadow: 0 0 20px rgba(168, 237, 234, 0.8); }
+        }
+        
+        .percentage {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            margin: 20px 0;
+            animation: countUp 2s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            animation: slideInRight 0.6s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            padding-right: 30px;
+        }
+        
+        .benefits-list li:nth-child(1) { animation-delay: 0.1s; }
+        .benefits-list li:nth-child(2) { animation-delay: 0.2s; }
+        .benefits-list li:nth-child(3) { animation-delay: 0.3s; }
+        .benefits-list li:nth-child(4) { animation-delay: 0.4s; }
+        .benefits-list li:nth-child(5) { animation-delay: 0.5s; }
+        
+        .benefits-list li::before {
+            content: '✨';
+            position: absolute;
+            right: 0;
+            font-size: 1.2rem;
+            animation: sparkle 1.5s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(180deg); }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .heart {
+            color: #ff6b9d;
+            font-size: 1.5rem;
+            animation: heartBeat 1.5s infinite;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.6);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.3);
+            font-size: 20px;
+            animation: floatUp 8s infinite linear;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+        }
+        
+        .supplement-box {
+            background: linear-gradient(120deg, #f8fffa 0%, #e0e7ff 100%);
+            border-radius: 22px;
+            box-shadow: 0 6px 32px rgba(102, 126, 234, 0.10);
+            padding: 32px 24px;
+            margin: 35px 0 40px 0;
+            border: 1.5px solid #d1d5db;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        table th, table td {
+            padding: 10px 8px;
+        }
+        
+        table td {
+            border-bottom: 1px solid #e0e7ef;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>سلام دوست عزیز <span class="flower">🌷</span></h1>
+            <p>گزارش تحلیل جامع سلامت شما</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🔍</span>
+                    تحلیل وضعیت جسمی و روحی بر اساس فرم‌ها
+                </h2>
+                <div class="section-content">
+                    بر اساس بررسی دقیق فرم‌های شما، تصویری جامع و دقیق از وضعیت جسمی و روحی‌تان ترسیم شده که به ما کمک می‌کند یک برنامه خودمراقبتی حرفه‌ای و هدفمند طراحی کنیم.<br><br>
+                    
+                    <strong>وضعیت جسمی:</strong> وزن، قد و دور کمر شما در محدوده‌ای ایده ال است بهتون تبریک میگم ؛ <span class="highlight">مصرف داروی لووتیروکسین نشان‌دهنده کم‌کاری تیروئید</span> است که خود می‌تواند باعث خستگی، کاهش انرژی، مشکلات خواب و تغییرات خلقی شود. عدم تحرک بدنی، تغذیه‌ی نامنظم با مصرف زیاد شیرینی‌ها و فست‌فود، و مشکلاتی مانند میگرن و درد کمر، وضعیت جسمی را تحت تأثیر قرار داده‌اند.<br><br>
+                    
+                    <strong>وضعیت روحی:</strong> علامت‌های اضطراب و نگرانی‌های مکرر، احساس تنیدگی و ترس همراه با کاهش نشاط و بی‌حوصلگی، <span class="highlight">مشخص‌کننده فشار روحی قابل توجهی</span> هستند.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">⚖️</span>
+                    سهم مشکلات جسمی و روحی در وضعیت فعلی
+                </h2>
+                <div class="section-content">
+                    <div class="percentage">55%</div>
+                    <p><span class="highlight">مشکلات مربوط به وضعیت روحی و روانی</span> شما است که ارتباط مستقیم با استرس، اضطراب، کمبود خواب و کاهش فعالیت بدنی دارد.</p>
+                    
+                    <div class="percentage">45%</div>
+                    <p><span class="highlight">مشکلات به وضعیت جسمی و هورمونی</span> شما، به‌خصوص کم‌کاری تیروئید، تغذیه نامناسب و کم‌تحرکی مربوط است.</p>
+                    
+                    <p>این نسبت نشان می‌دهد که دو بخش جسم و روان شما به صورت همزمان تحت فشار هستند و هر دو باید به طور هم‌زمان و متوازن مورد توجه قرار بگیرند.</p>
+                </div>
+            </div>
+             
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🧠</span>
+                    تحلیل منشأ علائم شما (میگرن یا اختلالات هورمونی)
+                </h2>
+                <div class="section-content">
+                    <p>برای اینکه دقیق و علمی بتونیم بگیم <b>چه درصدی از این علائم مربوط به میگرن هست</b> و <b>چه بخشی ناشی از بی‌نظمی یا قطع قاعدگی (مثلاً در سندرم پیش از یائسگی، یائسگی یا PCOS)</b>، این علائم رو برایت دسته‌بندی کردم و سپس درصد <b>احتمالی</b> منشأ اون‌ها رو بر اساس منابع علمی به‌صورت <b>تخمینی</b> می‌گم.</p>
+
+                    <h3 style="margin-top: 25px;">🧠 ۱. علائمی که <b>می‌تونن از میگرن</b> ناشی باشن:</h3>
+                    <table style="width:100%;">
+                        <tr><th>علامت</th><th>آیا از علائم رایج میگرنه؟</th></tr>
+                        <tr><td>سردرد یا سرگیجه</td><td>✅ (~100%) بسیار رایج</td></tr>
+                        <tr><td>تپش قلب یا تنگی نفس</td><td>⛔ (~10-20%) به‌ندرت</td></tr>
+                        <tr><td>اختلال خواب</td><td>⚠️(~30%) در برخی موارد</td></tr>
+                        <tr><td>تمرکز پایین</td><td>⚠️  (~40%) در فاز «پسامیگرنی»</td></tr>
+                        <tr><td>بیدار شدن نیمه‌شب</td><td>⚠️(~30%) ممکنه از درد میگرنی باشه</td></tr>
+                        <tr><td>افکار منفی/بی‌حوصلگی</td><td>⛔(~20%) بیشتر پیامد روانی طولانی‌مدت</td></tr>
+                        <tr><td>درد کمر</td><td>⛔ (~5%) خیلی نادر</td></tr>
+                    </table>
+                    <div class="highlight" style="display:block; margin:15px 0;">✅ جمع‌بندی از نظر میگرن: حدود <b>30 تا 40 درصد</b> این علائم ممکنه با میگرن در ارتباط باشه.</div>
+
+                    <h3 style="margin-top: 25px;">🩸 ۲. علائمی که به‌احتمال <b>زیاد ناشی از اختلالات هورمونی و قاعدگی</b> (مثل یائسگی، PCOS یا کم‌کاری تیروئید) هستن:</h3>
+                    <table style="width:100%;">
+                        <tr><th>علامت</th><th>علت احتمالی</th></tr>
+                        <tr><td>بی‌نظمی یا قطع قاعدگی</td><td>⚠️ مستقیماً نشانه اختلالات هورمونی</td></tr>
+                        <tr><td>گریه بی‌دلیل، بی‌حوصلگی، افکار منفی</td><td>⚠️ ناشی از افت استروژن/پروژسترون</td></tr>
+                        <tr><td>خواب زیاد یا بی‌خوابی</td><td>⚠️ شدیداً در دوران یائسگی یا کم‌کاری تیروئید</td></tr>
+                        <tr><td>ریزش موی سر</td><td>⚠️ بسیار رایج در کم‌کاری تیروئید و PCOS</td></tr>
+                        <tr><td>تنگی نفس، تپش قلب</td><td>⚠️ در کم‌کاری یا پرکاری تیروئید</td></tr>
+                        <tr><td>تمرکز پایین</td><td>⚠️ تیروئید، یائسگی، افسردگی</td></tr>
+                        <tr><td>درد کمر</td><td>⚠️ سندرم پیش‌قاعدگی یا افت استروژن</td></tr>
+                        <tr><td>مصرف لووتیروکسین</td><td>نشانه کم‌کاری تیروئید هست</td></tr>
+                    </table>
+                    <div class="highlight" style="display:block; margin:15px 0;">✅ جمع‌بندی از نظر اختلال هورمونی / پریود: حدود <b>70 تا 80 درصد علائم</b> به‌احتمال زیاد با <b>اختلالات هورمونی (پریودی، یائسگی، کم‌کاری تیروئید، PCOS)</b> در ارتباط هستن.</div>
+
+                    <h3 style="margin-top: 25px;">📌 نتیجه نهایی و ساده‌شده:</h3>
+                    <table style="width:100%;">
+                        <tr><th>منشأ احتمالی</th><th>تخمین درصد مربوط به علائم</th></tr>
+                        <tr><td>اختلالات هورمونی (پریودی، یائسگی، تیروئید)</td><td>70–80٪</td></tr>
+                        <tr><td>میگرن</td><td>30–40٪</td></tr>
+                        <tr><td>علائم مشترک بین این دو (مثل سردرد، بی‌خوابی، اضطراب) هم‌پوشانی دارن</td><td>-</td></tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        
+         
+        <div class="section">
+            <h2 class="section-title">
+                <span class="icon">🎯</span>
+                رویکرد ما برای بهبود
+            </h2>
+            <div class="section-content">
+                ما با یک برنامه جامع و هدفمند پیش خواهیم رفت که:<br><br>
+                
+                <span class="highlight">تنظیم و حمایت هورمونی و تغذیه‌ای:</span> با توجه به کم‌کاری تیروئید و وضعیت تغذیه، به اصلاح رژیم غذایی سالم، مصرف مکمل‌ها و داروهای مورد نیاز و برنامه‌ای برای افزایش انرژی و بهبود خواب می‌پردازیم.<br><br>
+                
+                <span class="highlight">بازتوانی روحی و مدیریت استرس:</span> با استفاده از تکنیک‌های علمی و ساده مدیریت استرس و اضطراب، به تدریج می‌آموزید که چطور افکار نگران‌کننده را کنترل کنید و آرامش ذهنی را بازگردانید.<br><br>
+                
+                <span class="highlight">فعالیت بدنی متناسب و ملایم:</span> شروع با تمرینات سبک و منظم، بدون فشار اضافی به بدن، باعث افزایش ترشح هورمون‌های شادی‌بخش و تقویت عضلات و مفاصل می‌شود.<br><br>
+                
+                <span class="highlight">بهبود کیفیت خواب:</span> برنامه‌ای برای اصلاح روتین خواب و افزایش ساعات خواب عمیق در نظر گرفته می‌شود.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="icon">🌟</span>
+                توقعات و نتایج قابل انتظار از برنامه
+            </h2>
+            <div class="section-content">
+                <ul class="benefits-list">
+                    <li><strong>کاهش علائم استرس و اضطراب:</strong> آرامش ذهنی بیشتر و کنترل بهتر افکار نگران‌کننده و خلق بهتر روزانه</li>
+                    <li><strong>افزایش انرژی و کاهش خستگی:</strong> احساس شادابی بیشتر و توانایی انجام فعالیت‌های روزمره با کیفیت بالاتر</li>
+                    <li><strong>بهبود خواب و تمرکز:</strong> خواب عمیق‌تر و تمرکز بالاتر که بر کیفیت زندگی تاثیر مستقیم دارد</li>
+                    <li><strong>بهبود وضعیت جسمی:</strong> کاهش دردهای عضلانی، کنترل بهتر وزن و متعادل شدن هورمون‌ها</li>
+                    <li><strong>تقویت حس رضایت و نشاط:</strong> بازگشت علاقه و لذت به فعالیت‌های روزمره و افزایش اعتماد به نفس</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="icon">🤝</span>
+                جمع‌بندی و همراهی ما
+            </h2>
+            <div class="section-content">
+                این برنامه دقیقاً برای رفع همزمان مشکلات جسمی و روحی شما طراحی شده تا به طور هماهنگ هر دو جنبه سلامت شما را بهبود بخشد. در مسیر پیش رو، من به عنوان همراه و متخصص، با ارائه گام به گام راهکارهای عملی و حمایت مستمر در کنارتان خواهم بود.<br><br>
+                
+                با این برنامه، شما فقط وضعیت فعلی‌تان را مدیریت نمی‌کنید بلکه <span class="highlight">آینده‌ای روشن‌تر، با سلامت بهتر و کیفیت زندگی بالاتر</span> برای خود رقم می‌زنید.<br><br>
+                
+                اگر آماده‌ای، بیایید با هم قدم اول را برداریم و مسیر بهبودی را آغاز کنیم. هر سوالی داشتی، من اینجا هستم برای کمک و همراهی.
+            </div>
+            <div class="highlight" style="display:block; margin:15px 0;">برای شما <b>یک چک‌لیست روزانه علائم</b> ساخته شده که بفهمیم کدوم علائم از کجا میان (مثلاً در طول ماه چند بار سردرد همراه با پریود هست یا بدون اون)، تا بتونیم ریشه‌ی علایم رو درست تشخیص بدیم و به کمک هم حلش کنیم.</div>
+        </div>
+       
+        <div class="footer">
+            با بهترین آرزوها برای سلامتی و شادی شما <span class="heart">💙</span>
+            <br><br>
+            <button class="cta-button" onclick="window.open('https://forms.gle/VLgobUsgEkR8BZXK6', '_blank')">
+                آماده‌ام! بیایید شروع کنیم ✨
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating hearts animation
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.getElementById('floatingHearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createFloatingHeart, 2000);
+        
+        // Button click handler
+        function startJourney() {
+            alert('عالی! آماده شروع مسیر بهبودی هستید. به زودی با شما تماس خواهیم گرفت! 🌟');
+            
+            // Add celebration effect
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createFloatingHeart, i * 100);
+            }
+        }
+        
+        // Add sparkle effects to sections on scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        entry.target.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            });
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
