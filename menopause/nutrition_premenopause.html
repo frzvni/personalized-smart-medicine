@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای تغذیه دوران پیش‌یائسگی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .intro-section {
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            text-align: center;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .food-groups {
+            padding: 20px;
+        }
+        
+        .food-group {
+            background: white;
+            margin: 20px 0;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 6px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .food-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: translate(30%, -30%);
+        }
+        
+        .food-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .group1 { border-left-color: #ff6b6b; }
+        .group2 { border-left-color: #feca57; }
+        .group3 { border-left-color: #48dbfb; }
+        .group4 { border-left-color: #0abde3; }
+        .group5 { border-left-color: #1dd1a1; }
+        .group6 { border-left-color: #ffeaa7; }
+        .group7 { border-left-color: #a29bfe; }
+        
+        .group-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .group-icon {
+            font-size: 2.5rem;
+            margin-left: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .group-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .group-examples {
+            background: rgba(0,0,0,0.02);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin: 12px 0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .group-benefits {
+            margin: 15px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .benefit-item::before {
+            content: '✨';
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .dosage {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dosage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px 30px;
+            margin: 30px 0;
+        }
+        
+        .tips-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tip-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .tip-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .progress-tracker {
+            margin: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .progress-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .week-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .day-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+        
+        .day-circle:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .day-circle.completed {
+            background: linear-gradient(135deg, #1dd1a1, #10ac84);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .header .subtitle { font-size: 1rem; }
+            .food-group { padding: 20px 15px; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            text-align: center;
+            min-width: 260px;
+            position: relative;
+        }
+        .modal-link {
+            display: inline-block;
+            margin: 12px 10px 0 10px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .modal-link:last-child {
+            background: linear-gradient(45deg, #0088cc, #005f8c);
+        }
+        .modal-link:hover {
+            opacity: 0.85;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 1.5em;
+            color: #888;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌷 شادابی در دوران پیش‌یائسگی</h1>
+            <div class="subtitle">راهنمای کامل تغذیه برای آرامش و سلامتی</div>
+        </div>
+        
+        <div class="intro-section">
+            <div class="intro-text">
+                <strong>عزیزم، بدن شما الان داره وارد فصل تازه‌ای میشه!</strong><br>
+            شما در دوران پیش‌یائسگی هستید. یعنی بدن‌ت کم‌کم داره تولید بعضی از هورمون‌ها (مخصوصاً استروژن و پروژسترون) رو کمتر می‌کنه. همین می‌تونه باعث بشه:
+            <div>* زود رنج یا عصبانی بشی،</div>
+            <div>* دلتنگ یا بی‌حوصله باشی،</div>
+            <div>* خواب‌هات سبک و بد بشن،</div>
+            <div>* پوست و موهات خشک‌تر بشن،</div>
+            <div>* و بعضی روزا حس کنی «اصلاً حال نداری»..</div>
+                ولی نگران نباش! با <span class="highlight">تغذیه مناسب</span> می‌تونی دوباره انرژی، آرامش و شادابی رو به زندگی‌ت برگردونی.
+            </div>
+
+ بدن تو، مثل یه باغچه‌ست؛ فقط باید یاد بگیری چطور هر روز غذاهایی بهش بدی که بهش آرامش، انرژی و شادابی برگردونه.<br>
+  🍽️ «هر وعده غذایی، باید مثل یه بشقاب عشق باشه برای مغز و بدنت»<br>
+من برات ۷ گروه مهم غذایی رو انتخاب کردم که توی وعده‌های روزانه‌ت باشن، چون هرکدوم‌شون یه اثر دارویی خاص روی مغز و روح و استخون‌هات دارن.<br>
+              <b>  <span class="highlight"><strong>ما قراره بر اساس همین اصل‌ها، برای شما سبد غذایی روزانه درست کنیم! 🍽️</strong></span></b>
+        </div>
+        
+        <div class="food-groups">
+            <div class="food-group group1">
+                <div class="group-header">
+                    <div class="group-icon">🥩</div>
+                    <div class="group-title">پروتئین‌های آرامش‌بخش</div>
+                </div>
+                <div class="group-examples">
+                    گوشت بوقلمون، ماهی، تخم‌مرغ، عدس، لپه، دل و جگر
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">هورمون سروتونین (آرامش) تولید می‌کنن</div>
+                    <div class="benefit-item">قند خون رو متعادل می‌کنن</div>
+                    <div class="benefit-item">کمک می‌کنن شب خواب راحت‌تری داشته باشی</div>
+                </div>
+                <div class="dosage">👩‍⚕️ باید تو هر وعده‌، یه کف دست پروتئین بخوری                </div>
+            </div>
+            
+            <div class="food-group group2">
+                <div class="group-header">
+                    <div class="group-icon">🍞</div>
+                    <div class="group-title">کربوهیدرات‌های پیچیده وانرژی‌بخش</div>
+                </div>
+                <div class="group-examples">
+                    نان سنگک، برنج قهوه‌ای، جو، سیب‌زمینی آب‌پز
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">انرژی آرام و پایدار می‌دن</div>
+                    <div class="benefit-item">کمک به تولید ملاتونین (برای خواب خوب )</div>
+                    <div class="benefit-item">جلوی افت ناگهانی قند و بی‌حوصلگی‌رو می‌گیرن </div>
+                </div>
+                <div class="dosage">👩‍⚕️ باید تو هر وعده، به‌اندازه‌ی یه مشت کوچیک از اینا باشه</div>
+            </div>
+            
+            <div class="food-group group3">
+                <div class="group-header">
+                    <div class="group-icon">🥑</div>
+                    <div class="group-title">چربی‌های خوب و مغذی </div>
+                </div>
+                <div class="group-examples">
+                    روغن زیتون، کنجد، گردو، بادام، آووکادو
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">تغذیه مغز و بهبود حافظه</div>
+                    <div class="benefit-item">نرم و شاداب کردن پوست</div>
+                    <div class="benefit-item">کاهش التهاب بدن</div>
+                </div>
+                <div class="dosage">👩‍⚕️ روزی ۲ قاشق غذاخوری از این چربی‌های خوب کافیه                </div>
+            </div>
+            
+            <div class="food-group group4">
+                <div class="group-header">
+                    <div class="group-icon">🥬</div>
+                    <div class="group-title">سبزیجات برگ سبز</div>
+                </div>
+                <div class="group-examples">
+                    اسفناج، جعفری، کاهو، کلم، سبزی خورشت
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">ضدافسردگی طبیعی</div>
+                    <div class="benefit-item">پاکسازی روده و بهبود روحیه</div>
+                    <div class="benefit-item">دفع سموم از بدن</div>
+                </div>
+                <div class="dosage">👩‍⚕️ سعی کن روزی دو مشت سبزی بخوری                </div>
+            </div>
+            
+            <div class="food-group group5">
+                <div class="group-header">
+                    <div class="group-icon">🍊</div>
+                    <div class="group-title">میوه‌های با قند ملایم و آرامش</div>
+                </div>
+                <div class="group-examples">
+                    موز، انار، آلبالو، سیب، خرما
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">* ویتامین C و پتاسیم دارن که به اعصاب کمک می‌کنه                    </div>
+                    <div class="benefit-item">جلوگیری از خشکی پوست</div>
+                    <div class="benefit-item">قند طبیعی آرام‌بخش دارن</div>
+                </div>
+                <div class="dosage">👩‍⚕️ روزی دو عدد میوه‌ی فصل بخور (مثلاً یه موز و یه سیب)                </div>
+            </div>
+            
+            <div class="food-group group6">
+                <div class="group-header">
+                    <div class="group-icon">🥛</div>
+                    <div class="group-title">لبنیات سبک و گرم</div>
+                </div>
+                <div class="group-examples">
+                    شیر، ماست کم‌چرب، کشک، پنیر سفید
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">تقویت استخوان‌ها</div>
+                    <div class="benefit-item">کمک به خواب شبانه</div>
+                    <div class="benefit-item">بدن‌تو قلیایی می‌کنن که برای خلق خوب مفیده</div>
+                </div>
+                <div class="dosage">👩‍⚕️ شب‌ها یه لیوان شیر گرم با یه خرما یا موز بخور                </div>
+            </div>
+            
+            <div class="food-group group7">
+                <div class="group-header">
+                    <div class="group-icon">🍵</div>
+                    <div class="group-title">گیاهان دارویی معجزه‌گر</div>
+                </div>
+                <div class="group-examples">
+                    زعفران، رازیانه، گل‌گاوزبان، بابونه، دارچین، زنجبیل
+                </div>
+                <div class="group-benefits">
+                    <div class="benefit-item">تنظیم آرام هورمون‌ها</div>
+                    <div class="benefit-item">کاهش فشار عصبی</div>
+                    <div class="benefit-item">خواب عمیق‌تر</div>
+                </div>
+                <div class="dosage">👩‍⚕️ شب‌ها: دمنوش آرام‌بخش</div>
+            </div>
+        </div>
+        
+        <div class="progress-tracker">
+            <div class="progress-title">🌟 پیگیری هفتگی شما</div>
+            <div class="week-days">
+                <div class="day-circle" onclick="toggleDay(this)">ش</div>
+                <div class="day-circle" onclick="toggleDay(this)">ی</div>
+                <div class="day-circle" onclick="toggleDay(this)">د</div>
+                <div class="day-circle" onclick="toggleDay(this)">س</div>
+                <div class="day-circle" onclick="toggleDay(this)">چ</div>
+                <div class="day-circle" onclick="toggleDay(this)">پ</div>
+                <div class="day-circle" onclick="toggleDay(this)">ج</div>
+            </div>
+        </div>
+        
+        <div class="tips-section">
+            <div class="tips-title">🧠 نکته‌های طلایی روزانه</div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">💧</div>
+                    <div class="tip-text">آب زیاد بنوشید<br>(۸ لیوان یا بیشتر)</div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🚫</div>
+                    <div class="tip-text">شکر و غذاهای سرخ‌کردنی رو کم کنید</div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🧂</div>
+                    <div class="tip-text">از نمک زیاد دوری کنید</div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">☀️</div>
+                    <div class="tip-text">در نور طبیعی قدم بزنید</div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🍳</div>
+                    <div class="tip-text">حتماً صبحانه بخورید</div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">😴</div>
+                    <div class="tip-text">خواب منظم ۷-۸ ساعته</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-title">🧡 جمع‌بندی ساده</div>
+            <div class="cta-text">
+                اگه در هر وعده‌تون یه کم از این ۷ گروه غذایی باشه،<br>
+                بدن‌تون دوباره مثل قبل سرحال می‌شه، خواب‌هاتون بهتر می‌شن،<br>
+                پوست‌تون می‌درخشه، و دل‌تون قرص می‌شه.<br><br>
+                <strong>ما قراره بر اساس همین اصل‌ها، برای شما سبد غذایی روزانه درست کنیم! 🍽️</strong>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Popup -->
+    <div id="dayModal" class="modal-overlay" style="display:none;">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h3 id="modalDayTitle">انتخاب راه ارتباطی</h3>
+        <p id="modalDayMsg">برای ارسال گزارش یا سوال، یکی از راه‌های زیر را انتخاب کن:</p>
+        <a href="https://wa.me/989307840833?text=%D8%A7%D9%85%D8%B1%D9%88%D8%B2%20%D8%A8%D8%A7%DB%8C%D8%AF%20%DA%86%DB%8C%20%D8%A8%D8%AE%D9%88%D8%B1%D9%85%D8%9F" target="_blank" class="modal-link">تغذیه</a>
+        <a href="https://wa.me/989307840833?text=%D8%A7%D9%85%D8%B1%D9%88%D8%B2%20%DA%86%D9%87%20%D8%AD%D8%B1%DA%A9%D8%A7%D8%AA%20%D9%88%D8%B1%D8%B2%D8%B4%DB%8C%20%D8%A7%DB%8C%20%D8%AF%D8%A7%D8%B1%D9%85%D8%9F" target="_blank" class="modal-link">ورزش</a>
+      </div>
+    </div>
+    
+    <script>
+        function toggleDay(element) {
+            element.classList.toggle('completed');
+            // Set modal message based on day
+            const dayMap = {
+                'ش': {
+                    title: 'شنبه: آغاز دوباره‌س!',
+                    msg: 'با یک برنامه‌ی تازه، شنبه‌ات رو خاص کن!'
+                },
+                'ی': {
+                    title: 'یک‌شنبه: فرصتی برای ادامه دادن',
+                    msg: 'دست‌آورد دیروزت رو ادامه بده، قوی‌تر از قبل!'
+                },
+                'د': {
+                    title: 'دوشنبه: تقویت انگیزه',
+                    msg: 'نذار انگیزه‌ات سرد بشه. دوشنبه‌ها برای انرژی‌ن!'
+                },
+                'س': {
+                    title: 'سه‌شنبه: بازبینی اهداف',
+                    msg: 'نیمه‌ی راهه. حالت رو بررسی کن و اصلاح کن!'
+                },
+                'چ': {
+                    title: 'چهارشنبه: آرامش در عین پایداری',
+                    msg: 'چهارشنبه یعنی پایداری و تمرکز!'
+                },
+                'پ': {
+                    title: 'پنج‌شنبه: مرور و آماده‌سازی',
+                    msg: 'وقت جمع‌بندیه. چی از این هفته یاد گرفتی؟'
+                },
+                'ج': {
+                    title: 'جمعه: بازسازی ذهن و جسم',
+                    msg: 'یه روز برای تجدید قوا. بذار بدنت نفس بکشه.'
+                }
+            };
+            const dayText = element.textContent.trim();
+            if(dayMap[dayText]) {
+                document.getElementById('modalDayTitle').textContent = dayMap[dayText].title;
+                document.getElementById('modalDayMsg').textContent = dayMap[dayText].msg;
+            } else {
+                document.getElementById('modalDayTitle').textContent = 'انتخاب راه ارتباطی';
+                document.getElementById('modalDayMsg').textContent = 'برای ارسال گزارش یا سوال، یکی از راه‌های زیر را انتخاب کن:';
+            }
+            // Show modal popup
+            document.getElementById('dayModal').style.display = 'flex';
+            // Add a little celebration animation
+            if (element.classList.contains('completed')) {
+                element.style.animation = 'none';
+                setTimeout(() => {
+                    element.style.animation = 'scale 0.5s ease';
+                }, 10);
+            }
+        }
+        function closeModal() {
+            document.getElementById('dayModal').style.display = 'none';
+        }
+        
+        // Add celebration animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes scale {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

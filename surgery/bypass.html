@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> نیازهای تغذیه ای بدن شما - پلن درمانی شخصی‌سازی‌شده</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .why-section {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-right: 5px solid #fdcb6e;
+        }
+        
+        .goal-section {
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
+            border-right: 5px solid #00b894;
+        }
+        
+        .process-section {
+            background: linear-gradient(135deg, #dda0dd, #da70d6);
+            border-right: 5px solid #9b59b6;
+        }
+        
+        .foundation-section {
+            background: linear-gradient(135deg, #87ceeb, #4682b4);
+            border-right: 5px solid #0984e3;
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2d3436;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section p, .section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2d3436;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-right: 4px solid #e17055;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(to left, #6c5ce7, #a29bfe);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+            width: 45%;
+            border: 3px solid #6c5ce7;
+        }
+        
+        .timeline-item h3 {
+            color: #6c5ce7;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .method-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .psychodynamic { border-top-color: #e74c3c; }
+        .cbt { border-top-color: #3498db; }
+        .mindfulness { border-top-color: #2ecc71; }
+        
+        .method-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2d3436;
+            font-weight: 600;
+        }
+        
+        .method-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .examples {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-right: 3px solid #fd79a8;
+        }
+        
+        .examples h5 {
+            color: #e84393;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .start-button {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 184, 148, 0.4);
+        }
+        
+        .encouragement {
+            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.3);
+        }
+        
+        .encouragement h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .floating-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-emoji:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .floating-emoji:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 2s; }
+        .floating-emoji:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 3s; }
+        .floating-emoji:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+        .floating-emoji:nth-child(6) { top: 70%; right: 5%; animation-delay: 5s; }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .section {
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+            }
+            
+            .method-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        .colorful-highlight {
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-weight: bold;
+            margin: 18px 0;
+            box-shadow: 0 4px 18px rgba(240,147,251,0.10);
+            font-size: 1.13em;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-emoji">🌟</div>
+        <div class="floating-emoji">💚</div>
+        <div class="floating-emoji">🌸</div>
+        <div class="floating-emoji">✨</div>
+        <div class="floating-emoji">🦋</div>
+        <div class="floating-emoji">🌺</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧠بررسی نیازهای تغذیه ای بدن شما </h1>
+        </div>
+        
+        <div class="content">
+            <div class="section why-section">
+                <span class="section-icon">📍</span>
+                <h2>💪 پروتئین؛ حیاتی‌ترین نیاز بدن شما بعد از جراحی</h2>
+                <div class="colorful-highlight"><b> بعد از عمل بای‌پس معده، معده شما کوچک‌تر شده و بخش‌هایی از روده که مسئول جذب غذا هستند، دور زده شده‌اند. همین باعث می‌شود بدن شما نتواند به‌خوبی پروتئین جذب کند.</b></div>
+
+                <div><b> <strong> حالا چرا این مهمه؟</strong> </b></div>
+                
+                <div><b> پروتئین مثل آجرهایی هست که بدن ازش برای ساخت عضله، ترمیم زخم، ساخت هورمون‌ها، آنزیم‌ها و حتی تقویت سیستم ایمنی استفاده می‌کنه. وقتی به اندازه کافی پروتئین نخورید:</b></div>
+                
+                <div><b> بدن‌تون عضله از دست می‌ده (ضعف، خستگی، پوست افتاده)</b></div>
+                
+                <div><b>زخم‌هاتون دیر خوب می‌شن</b></div>
+                
+                <div><b>موهاتون شروع به ریزش می‌کنه </b></div>
+                
+                <div><b>  ایمنی بدن پایین میاد و بیشتر مریض می‌شید
+                </b></div>
+                
+            </div>
+            <div class="section why-section">
+                <span class="section-icon">📍</span>
+                <h2>✅ چقدر پروتئین نیاز دارید؟</h2>
+
+                <div class="colorful-highlight"><b> حداقل ۸۰ تا ۱۰۰ گرم در روز</b></div>
+
+                <div><b> <strong> 
+(برای شما بیشتر از حالت عادیه چون هم جراحی داشتید، هم تخمدان برداشته شده و بدن‌تون بیشتر نیاز داره)
+
+</strong> </b></div>
+                
+                
+                <div class="highlight-box">
+                    <strong>💡 نکته مهم:</strong> بدن فقط ۲۰ تا ۲۵ گرم پروتئین در هر وعده می‌تونه جذب کنه. پس اگه همه‌ی پروتئین رو با یه وعده بخورید، نصفش هدر می‌ره.
+                </div>
+            </div>
+            
+            <div class="section goal-section">
+                <span class="section-icon">🎯</span>
+                <h2> ⚠️ نکات مهم و ساده ولی حیاتی:</h2>
+       
+                <ul style="margin-right: 20px; position: relative; z-index: 2;">
+                <li>هر وعده کوچیک ولی پروتئینی باشه</li>
+                    <li> پروتئین رو آهسته و کامل بجوید، چون معده‌تون کوچکتر شده و زود سیر می‌شید</li>
+                    <li>نوشیدنی‌ها رو ۳۰ دقیقه قبل و بعد غذا نخورید چون باعث می‌شن زود سیر بشید و غذای کافی نخورید</li>
+                    <li>با معده خالی شیک پروتئین نخورید، بهتره کمی غذا همراهش باشه</li>
+                </ul>
+            </div>
+            <div class="section goal-section">
+                <span class="section-icon">🎯</span>
+                <h2>  🧪 چرا آزمایش خون ضروریه؟</h2>
+       
+                <ul style="margin-right: 20px; position: relative; z-index: 2;">
+<h>حتی اگر خوب غذا بخورید، ممکنه جذبش کم باشه. هر ۳ تا ۶ ماه، آزمایش خون لازم دارید تا ببینید  :                </h>
+                    <li> پروتئین کافی جذب شده ؟</li>
+                    <li> کم خونی دارید ؟</li>
+                    <li>بدن‌تون مواد حیاتی مثل آهن، B12 یا ویتامین D رو داره؟</li>
+                </ul>
+            </div>
+            
+            <div class="section why-section">
+                <span class="section-icon">🍞</span>
+                <h2>کربوهیدرات‌های خوب؛ سوخت اصلی بدن</h2>
+                <div class="colorful-highlight"><b>برخلاف تصور بعضی‌ها، حذف کامل کربوهیدرات‌ها (مثل نان، برنج، میوه‌ها) اشتباهه! بدن شما برای انرژی، مخصوصاً برای مغز و اعصاب، به کربوهیدرات پیچیده نیاز داره.</b></div>
+                <div class="highlight-box">
+                    <strong>❌ اما بعد از بای‌پس معده، خوردن کربوهیدرات‌های بد (مثل قند، نان سفید، شیرینی‌ها) باعث یه حالت ناراحت‌کننده می‌شه به اسم دامپینگ سندروم؛ یعنی بعد از خوردن غذاهایی مثل شیرینی٫ بستنی دچار این علائم می‌شید:</strong>
+                    <ul>
+                        <li>تپش قلب</li>
+                        <li>تعریق</li>
+                        <li>ضعف و لرزش</li>
+                        <li>حالت تهوع</li>
+                        <li>دل‌درد و اسهال</li>
+                    </ul>
+                </div>
+                <div class="highlight-box">
+                    <strong>✅ چه نوع کربوهیدراتی بخورم؟</strong>
+                    <ul>
+                        <li>نان سنگک یا سبوس‌دار</li>
+                        <li>برنج قهوه‌ای یا جو</li>
+                        <li>جو دوسر (یولاف)</li>
+                        <li>حبوبات (عدس، لوبیا، لپه)</li>
+                        <li>سبزیجات نشاسته‌ای (مثل کدو حلوایی یا سیب‌زمینی با پوست)</li>
+                    </ul>
+                </div>
+                <div class="highlight-box">
+                    <strong>⏱️ چطور تقسیم کنم؟</strong>
+                    <table style="width:100%; background:#fff; border-radius:10px; margin-top:10px;">
+                        <tr><th>وعده غذایی</th><th>مقدار کربوهیدرات پیشنهادی</th><th>توضیح ساده</th></tr>
+                        <tr><td>صبحانه</td><td>20 گرم</td><td>مثلاً ۲ قاشق یولاف یا نصف نان سنگک</td></tr>
+                        <tr><td>میان‌وعده صبح</td><td>10-15 گرم</td><td>مثلاً یک سیب یا نصف موز کوچک</td></tr>
+                        <tr><td>ناهار</td><td>25 گرم</td><td>مثلاً نصف لیوان برنج قهوه‌ای</td></tr>
+                        <tr><td>میان‌وعده عصر</td><td>5-10 گرم</td><td>چند برش سبزی یا یک عدد بیسکوییت سبوس‌دار</td></tr>
+                        <tr><td>شام</td><td>15-20 گرم</td><td>سبزیجات بخارپز + کمی نان یا حبوبات</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section why-section">
+                <span class="section-icon">🥑</span>
+                <h2>چربی‌های سالم؛ برای هورمون‌ها، مغز و آرامش اعصاب</h2>
+                <div class="colorful-highlight"><b>شما در دوران پیش‌یائسگی هستید و تخمدان چپ هم برداشته شده، یعنی بدن‌تون هورمون کمتری تولید می‌کنه. چربی‌های خوب به شما کمک می‌کنن تا:</b></div>
+                <ul>
+                    <li>بهتر و آرام‌تر بخوابید</li>
+                    <li>پوست و مو سالم‌تر بمونه</li>
+                    <li>مغزتون بهتر کار کنه</li>
+                    <li>و حتی خلق‌تون بهتر بشه</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>✅ از چه چربی‌هایی استفاده کنم؟</strong>
+                    <ul>
+                        <li>روغن زیتون یا روغن کنجد</li>
+                        <li>آووکادو (اگر هست)</li>
+                        <li>مغزها: بادام، گردو، پسته (روزانه یک مشت)</li>
+                        <li>ماهی‌های چرب مثل سالمون یا تن</li>
+                        <li>دانه‌های کتان و چیا (برای امگا ۳)</li>
+                    </ul>
+                    <strong>❌ چربی‌های مضر مثل روغن سرخ‌کردنی، کره‌های صنعتی، غذاهای آماده و فست‌فودها رو حذف کنید.</strong>
+                </div>
+                <div class="highlight-box">
+                    <strong>⏱️ مقدار و تقسیم‌بندی چطور باشه؟</strong>
+                    <ul>
+                        <li>روزانه ۳۵ تا ۴۵ گرم چربی سالم</li>
+                        <li>یعنی در هر وعده، حدود ۵ تا ۸ گرم</li>
+                        <li>به‌صورت پنهان در غذاها: روغن زیتون روی سالاد، ۴ عدد بادام در میان‌وعده، کمی دانه چیا در ماست</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section why-section">
+                <span class="section-icon">💊</span>
+                <h2>مکمل‌ها؛ مکمل نه جایگزین</h2>
+                <div class="colorful-highlight"><b>بدن شما بعد از جراحی نمی‌تونه بعضی ویتامین‌ها و مینرال‌ها رو به‌اندازه کافی جذب کنه، حتی اگر خوب غذا بخورید. برای همین مکمل‌ها حیاتی هستن.</b></div>
+                <div class="highlight-box">
+                    <strong>✅ برنامه ساده‌ی مکمل‌ها (با زمان و دوز)</strong>
+                    <table style="width:100%; background:#fff; border-radius:10px; margin-top:10px;">
+                        <tr><th>زمان مصرف</th><th>مکمل لازم</th><th>چرا مهمه؟</th></tr>
+                        <tr><td>صبح</td><td>مولتی‌ویتامین + ویتامین D3</td><td>تقویت استخوان، سیستم ایمنی</td></tr>
+                        <tr><td>ظهر</td><td>آهن + ویتامین C</td><td>برای پیشگیری از کم‌خونی</td></tr>
+                        <tr><td>عصر</td><td>کلسیم سیترات</td><td>برای استخوان‌ها و دندان‌ها</td></tr>
+                        <tr><td>شب</td><td>B12 + منیزیم</td><td>برای اعصاب، انرژی، خواب راحت</td></tr>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <strong>✅ دوز پیشنهادی ساده و استاندارد:</strong>
+                    <ul>
+                        <li>B12: روزانه ۵۰۰ تا ۱۰۰۰ میکروگرم (زیرزبانی یا تزریقی، بهتر از قرص معمولی)</li>
+                        <li>ویتامین D3: روزانه ۳۰۰۰ تا ۵۰۰۰ واحد</li>
+                        <li>کلسیم سیترات: ۱۵۰۰ تا ۲۰۰۰ میلی‌گرم (در ۳ دوز تقسیم بشه)</li>
+                        <li>آهن: ۴۵ تا ۶۰ میلی‌گرم (با ویتامین C مصرف بشه، با لبنیات و چای مصرف نشه)</li>
+                        <li>فولات: ۸۰۰ میکروگرم (ویتامین B9)</li>
+                        <li>تیامین (B1): ۵۰ تا ۱۰۰ میلی‌گرم</li>
+                        <li>روی: ۱۵ تا ۳۰ میلی‌گرم</li>
+                        <li>مس: ۲ میلی‌گرم</li>
+                        <li>سلنیوم: ۲۰۰ میکروگرم</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section encouragement">
+                <h3>📝 جمع‌بندی ساده برای خود فرد:</h3>
+                <p>خانم عزیز، بدن شما الان مثل یه ماشین ظریفه که باید با سوخت و مراقبت خاصی راه بیفته. غذا خوردن براتون فقط رفع گرسنگی نیست، یه درمانه. اگه با حوصله و برنامه‌ریزی غذا بخورید، می‌تونید:</p>
+                <ul style="text-align:right; max-width:500px; margin:0 auto;">
+                    <li>انرژی‌تون رو بالا نگه دارید</li>
+                    <li>از ریزش مو و ضعف جلوگیری کنید</li>
+                    <li>اضطراب و بی‌خوابی رو کنترل کنید</li>
+                    <li>استخوان‌های محکم و خلق خوب داشته باشید</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

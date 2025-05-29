@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراقبت شخصی هوشمند</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            50% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+            100% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24, #feca57, #48dbfb);
+            background-size: 300% 300%;
+            animation: gradientFlow 4s ease infinite;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: sparkle 20s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: rotate(0deg) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+            line-height: 1.8;
+        }
+        
+        .greeting {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-right: 5px solid #ff6b6b;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .greeting::before {
+            content: '❤️';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 2em;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .greeting h2 {
+            color: #d63031;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            margin-right: 60px;
+        }
+        
+        .info-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-right: 5px solid #00b894;
+            position: relative;
+        }
+        
+        .info-section h3 {
+            color: #00695c;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .symptoms-list {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .symptoms-list ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+        
+        .symptoms-list li {
+            margin: 12px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .symptoms-list li:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .symptoms-list li::before {
+            content: '🔸';
+            margin-left: 10px;
+        }
+        
+        .action-section {
+            background: linear-gradient(135deg, #d299c2, #fef9d7);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-right: 5px solid #e17055;
+        }
+        
+        .action-section h3 {
+            color: #6c5ce7;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-right: 4px solid #fd79a8;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 15px;
+            font-size: 1.1em;
+        }
+        
+        .promise-section {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            border: 3px solid #fdcb6e;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promise-section::before {
+            content: '🌸';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5em;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .promise-section h3 {
+            color: #e17055;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .whatsapp-button {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .footer {
+            background: linear-gradient(45deg, #2d3436, #636e72);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin: 0 5px;
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #d63031;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .dark-purple {
+            color: #4B006E !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 مراقبت شخصی هوشمند 🌟</h1>
+            <p class="subtitle">همراه شما در مسیر سلامتی</p>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">
+                <h2>سلام عزیز دلم</h2>
+                <p>ممنونم که به ما اعتماد کردی و وقت گذاشتی تا از حال و احوالت برامون بگی. خیلی از علائمی که گفتی نشون میده بدنت داره یک دوران مهم و خاص رو تجربه می‌کنه؛ اسم این دوران <span class="highlight">"پیش‌یائسگی"</span> هست، که معمولاً خانم‌ها بین ۴۵ تا ۵۵ سالگی واردش می‌شن.</p>
+            </div>
+            
+            <div class="info-section">
+                <h3>🔹 چه اتفاقی در بدن شما می‌افتد؟</h3>
+                <p>توی این دوران، هورمون‌های زنونه (مثل <span class="highlight">استروژن</span> و <span class="highlight">پروژسترون</span>) بالا و پایین می‌شن، و این بالا و پایین‌شدن باعث می‌شه که هم حال روحی‌ات عوض بشه، هم بدنت واکنش‌های عجیبی نشون بده.</p>
+                <p>از طرف دیگه، چون قبلاً عمل "بای‌پس معده" انجام دادی و یه تخمدونت هم برداشته شده، این موضوع باعث می‌شه بدنت بیشتر دچار کمبود و بی‌نظمی بشه.</p>
+            </div>
+            
+            <div class="symptoms-list">
+                <h3>📌 علائمی که تجربه می‌کنید:</h3>
+                <ul>
+                    <li>بی‌خوابی و بیدار شدن شب‌ها</li>
+                    <li>ناراحتی، گریه بی‌دلیل، اضطراب</li>
+                    <li>خستگی همیشگی، درد مفاصل و عضله</li>
+                    <li>دل‌درد، برگشت اسید، یبوست</li>
+                    <li>سوزش ادرار و تکرر ادرار</li>
+                    <li>ریزش مو، پرمویی، چاقی شکمی</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: 600; color: #d63031;">همه‌ی اینا می‌تونن با همدیگه مرتبط باشن و نشون می‌دن که بدنت و روحت نیاز به یه رسیدگی دقیق دارن.</p>
+            </div>
+            
+            <div class="action-section">
+                <h3>📋 قدم اول: آزمایش‌ها</h3>
+                <p>عزیزم، برای اینکه بدونیم مشکل دقیقاً از چیه، لازمه یه سری آزمایش خون و سونوگرافی انجام بدی. این کار کمک می‌کنه بفهمیم بدنت چی کم داره و چطور باید کمکش کنیم:</p>
+                
+                <div class="step-card dark-purple">
+                    <span class="step-number">1</span>
+                    <strong>آزمایش هورمون‌ها:</strong> FSH، LH، استروژن، تیروئید، پرولاکتین
+                </div>
+                <div class="step-card dark-purple">
+                    <span class="step-number">2</span>
+                    <strong>آزمایش ویتامین‌ها:</strong> ویتامین D، ویتامین B12، آهن و کلسیم
+                </div>
+                <div class="step-card dark-purple">
+                    <span class="step-number">3</span>
+                    <strong>بررسی عمومی:</strong> قند خون، چربی، فشار خون
+                </div>
+                <div class="step-card dark-purple">
+                    <span class="step-number">4</span>
+                    <strong>تصویربرداری:</strong> سونوگرافی رحم و تخمدان، تراکم استخوان
+                </div>
+                <div class="step-card dark-purple">
+                    <span class="step-number">5</span>
+                    <strong>بررسی‌های تکمیلی:</strong> آزمایش ادرار، نوار قلب در صورت نیاز
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.9); padding: 15px; border-radius: 10px; margin-top: 20px; border-right: 4px solid #00b894;">
+                    <strong>🟢 اگه قبلاً بعضی از این آزمایش‌ها رو انجام دادی، لطفاً عکس جواب‌ها رو برام توی واتساپ بفرست تا بررسی‌شون کنم.</strong>
+                </div>
+            </div>
+            
+            <div class="action-section">
+                <h3>✅ قدم دوم: برنامه‌ی مخصوص شما</h3>
+                <p>ما یه برنامه‌ی کامل و ساده برات آماده می‌کنیم که شامل موارد زیره:</p>
+                
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <strong>برنامه‌ی روزانه:</strong> برای خواب، تغذیه، فعالیت بدنی سبک، و کنترل استرس
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <strong>مکمل‌هایی که نیاز داری</strong> تا بدنت قوی‌تر بشه
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <strong>درمان مناسب:</strong> برای کاهش گرگرفتگی، خشکی واژن یا اضطراب
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <strong>درمان روحی و روانی</strong> با روش‌هایی که تو خونه بتونی انجام بدی
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">5</span>
+                    <strong>پیگیری منظم:</strong> ما کنار تو هستیم قدم‌به‌قدم
+                </div>
+            </div>
+            
+            <div class="promise-section pulse">
+                <h3>❤️ حرف آخر</h3>
+                <p><strong>تو تنها نیستی.</strong> خیلی از خانم‌ها توی این سن با همین مشکلات روبه‌رو می‌شن، ولی چون اطلاعات درست بهشون داده نمی‌شه، دچار ترس یا ناامیدی می‌شن. اما ما اینجاییم که با <span class="highlight">حوصله و قدم‌به‌قدم</span> کمکت کنیم.</p>
+                <p style="margin-top: 15px; font-size: 1.1em;"><strong>بهت قول می‌دم که با پیگیری و همکاری با هم، کم‌کم حالت بهتر می‌شه و دوباره انرژی و آرامش به زندگی‌ات برمی‌گرده.</strong></p>
+            </div>
+            
+            <div class="contact-section">
+                <h3>📲 در انتظار شما هستیم</h3>
+                <p>منتظرم که آزمایشات رو بفرستی تو واتساپ تا بر اساس نتیجه‌ها برنامه رو دقیق‌تر برات تنظیم کنیم.</p>
+                <a href="https://wa.me/989123574104" target="_blank" rel="noopener noreferrer">
+                  <button class="whatsapp-button">📱 ارسال آزمایش‌ها در واتساپ</button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>با عشق و احترام <span class="emoji">💖</span> گروه <strong>مراقبت شخصی هوشمند</strong></p>
+        </div>
+    </div>
+</body>
+</html>
