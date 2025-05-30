@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای تأثیر مواد غذایی بر میگرن</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 15s infinite;
+        }
+        
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 80%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            top: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            top: 60%;
+            left: 90%;
+            animation-delay: 4s;
+        }
+        
+        .shape:nth-child(4) {
+            top: 80%;
+            left: 10%;
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(-60px) rotate(240deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideDown 1s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.3); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.6); }
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .tab.active {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            box-shadow: 0 8px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .category {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .category.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .food-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .food-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .food-card:hover::before {
+            left: 100%;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .food-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .effect-badge {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .beneficial {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+        }
+        
+        .trigger {
+            background: linear-gradient(45deg, #f44336, #ff5722);
+            color: white;
+        }
+        
+        .neutral {
+            background: linear-gradient(45deg, #FF9800, #FFC107);
+            color: white;
+        }
+        
+        .mild-trigger {
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+            color: white;
+        }
+        
+        .description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .search-box {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            font-family: inherit;
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-box:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape">🥬</div>
+        <div class="shape">🍎</div>
+        <div class="shape">🥛</div>
+        <div class="shape">🍗</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧠 راهنمای تأثیر مواد غذایی بر میگرن</h1>
+            <p>کاملترین راهنما برای شناخت غذاهای مفید و مضر در میگرن</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="جستجوی ماده غذایی..." id="searchBox">
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color beneficial"></div>
+                <span>مفید</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color trigger"></div>
+                <span>محرک قوی</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color mild-trigger"></div>
+                <span>محرک خفیف</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color neutral"></div>
+                <span>ایمن/خنثی</span>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-category="vegetables">
+                <span class="emoji">🥬</span> سبزیجات
+            </button>
+            <button class="tab" data-category="fruits">
+                <span class="emoji">🍎</span> میوه‌ها
+            </button>
+            <button class="tab" data-category="legumes">
+                <span class="emoji">🌰</span> حبوبات و مغزها
+            </button>
+            <button class="tab" data-category="proteins">
+                <span class="emoji">🍗</span> گوشت و پروتئین
+            </button>
+            <button class="tab" data-category="fats">
+                <span class="emoji">🧈</span> چربی‌ها
+            </button>
+            <button class="tab" data-category="dairy">
+                <span class="emoji">🥛</span> لبنیات
+            </button>
+            <button class="tab" data-category="drinks">
+                <span class="emoji">🥤</span> نوشیدنی‌ها
+            </button>
+            <button class="tab" data-category="grains">
+                <span class="emoji">🌾</span> غلات
+            </button>
+            <button class="tab" data-category="spices">
+                <span class="emoji">🌶️</span> ادویه‌ها
+            </button>
+        </div>
+
+        <!-- سبزیجات -->
+        <div class="category active" id="vegetables">
+            <div class="food-grid">
+                <div class="food-card" data-name="کلم بروکلی">
+                    <div class="food-name">🥦 کلم بروکلی</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">سرشار از منیزیم و آنتی‌اکسیدان، کاهش التهاب مغزی و تقویت سیستم عصبی</div>
+                </div>
+                
+                <div class="food-card" data-name="اسفناج">
+                    <div class="food-name">🥬 اسفناج</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">منبع غنی منیزیم و فولات، تنظیم عروق مغزی و کاهش تنش عصبی</div>
+                </div>
+                
+                <div class="food-card" data-name="کاهو">
+                    <div class="food-name">🥬 کاهو</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">آرام‌بخش طبیعی، کمک به خواب بهتر و هیدراتاسیون بدن</div>
+                </div>
+                
+                <div class="food-card" data-name="هویج">
+                    <div class="food-name">🥕 هویج</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">بدون ترکیبات محرک، حاوی بتاکاروتن و ویتامین A مفید برای مغز</div>
+                </div>
+                
+                <div class="food-card" data-name="کرفس">
+                    <div class="food-name">🌿 کرفس</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">مدر طبیعی، ضد التهاب، تنظیم مایعات بدن و کاهش فشار خون</div>
+                </div>
+                
+                <div class="food-card" data-name="کلم سفید">
+                    <div class="food-name">🥬 کلم سفید</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">ضد التهاب قوی، فاقد ترکیبات محرک میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="پیاز">
+                    <div class="food-name">🧅 پیاز</div>
+                    <div class="effect-badge mild-trigger">محرک در برخی</div>
+                    <div class="description">دارای سولفور و فنیل، در برخی افراد حساس ممکن است تحریک‌کننده باشد</div>
+                </div>
+                
+                <div class="food-card" data-name="گوجه فرنگی">
+                    <div class="food-name">🍅 گوجه فرنگی</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">دارای هیستامین بالا، اسید طبیعی و تیرامین که محرک قوی میگرن است</div>
+                </div>
+                
+                <div class="food-card" data-name="سیر">
+                    <div class="food-name">🧄 سیر</div>
+                    <div class="effect-badge mild-trigger">تحریک‌کننده خفیف</div>
+                    <div class="description">در برخی افراد حساس باعث میگرن می‌شود، بهتر است محدود مصرف شود</div>
+                </div>
+                
+                <div class="food-card" data-name="بادمجان">
+                    <div class="food-name">🍆 بادمجان</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">دارای آلکالوئیدهایی که در برخی افراد حساسیت و میگرن ایجاد می‌کند</div>
+                </div>
+                
+                <div class="food-card" data-name="فلفل دلمه‌ای">
+                    <div class="food-name">🫑 فلفل دلمه‌ای</div>
+                    <div class="effect-badge neutral">نسبتاً ایمن</div>
+                    <div class="description">در مقادیر کم مشکلی ندارد، ولی در برخی افراد حساسیت‌زا است</div>
+                </div>
+                
+                <div class="food-card" data-name="خیار">
+                    <div class="food-name">🥒 خیار</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">هیدراتاسیون عالی، خنک‌کننده و بدون ترکیبات محرک</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- میوه‌ها -->
+        <div class="category" id="fruits">
+            <div class="food-grid">
+                <div class="food-card" data-name="سیب">
+                    <div class="food-name">🍎 سیب</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">فیبر بالا، قند طبیعی ملایم و پکتین مفید برای تنظیم قند خون</div>
+                </div>
+                
+                <div class="food-card" data-name="هندوانه">
+                    <div class="food-name">🍉 هندوانه</div>
+                    <div class="effect-badge mild-trigger">گاهی محرک</div>
+                    <div class="description">قند بالا دارد، در افراد حساس باعث افت قند پس از افزایش ناگهانی می‌شود</div>
+                </div>
+                
+                <div class="food-card" data-name="موز">
+                    <div class="food-name">🍌 موز</div>
+                    <div class="effect-badge mild-trigger">محرک در برخی</div>
+                    <div class="description">دارای تیرامین به‌ویژه موز رسیده، بهتر است موز کمی سبز مصرف شود</div>
+                </div>
+                
+                <div class="food-card" data-name="مرکبات">
+                    <div class="food-name">🍊 مرکبات</div>
+                    <div class="effect-badge mild-trigger">محرک در برخی</div>
+                    <div class="description">پرتقال، لیمو و گریپ‌فروت اسیدی هستند و در حساس‌ها تحریک می‌کنند</div>
+                </div>
+                
+                <div class="food-card" data-name="گیلاس">
+                    <div class="food-name">🍒 گیلاس</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">ضد التهاب و آنتی‌اکسیدان قوی، حاوی آنتوسیانین مفید برای مغز</div>
+                </div>
+                
+                <div class="food-card" data-name="انگور">
+                    <div class="food-name">🍇 انگور</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">قند بالا و دارای تانن‌ها که می‌تواند محرک میگرن باشد</div>
+                </div>
+                
+                <div class="food-card" data-name="انار">
+                    <div class="food-name">🍎 انار</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">آنتی‌اکسیدان بالا و تنظیم‌کننده فشار خون، محافظت از عروق مغزی</div>
+                </div>
+                
+                <div class="food-card" data-name="آووکادو">
+                    <div class="food-name">🥑 آووکادو</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">دارای تیرامین زیاد که محرک قوی میگرن محسوب می‌شود</div>
+                </div>
+                
+                <div class="food-card" data-name="آناناس">
+                    <div class="food-name">🍍 آناناس</div>
+                    <div class="effect-badge mild-trigger">محرک در برخی</div>
+                    <div class="description">اسیدی و دارای بروملین، ممکن است در برخی افراد تریگر باشد</div>
+                </div>
+                
+                <div class="food-card" data-name="خرما">
+                    <div class="food-name">🫰 خرما</div>
+                    <div class="effect-badge mild-trigger">محرک در مصرف زیاد</div>
+                    <div class="description">قند بسیار بالا، افزایش ناگهانی قند خون و سپس افت آن</div>
+                </div>
+                
+                <div class="food-card" data-name="توت فرنگی">
+                    <div class="food-name">🍓 توت فرنگی</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">آنتی‌اکسیدان بالا، ویتامین C و فیبر مفید بدون محرک‌های میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="بلوبری">
+                    <div class="food-name">🫐 بلوبری</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">قوی‌ترین آنتی‌اکسیدان طبیعی، محافظت از مغز و کاهش التهاب</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- حبوبات و مغزها -->
+        <div class="category" id="legumes">
+            <div class="food-grid">
+                <div class="food-card" data-name="عدس">
+                    <div class="food-name">🟤 عدس</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">منبع عالی پروتئین گیاهی و منیزیم، تنظیم قند خون</div>
+                </div>
+                
+                <div class="food-card" data-name="نخود">
+                    <div class="food-name">🟡 نخود</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">فیبر بالا، پروتئین کامل و بدون ترکیب محرک میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="لوبیا">
+                    <div class="food-name">🫘 لوبیا</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">در مصرف مناسب بدون محرک، منبع خوب پروتئین و فیبر</div>
+                </div>
+                
+                <div class="food-card" data-name="لپه">
+                    <div class="food-name">🟢 لپه</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">غنی از فولات و فیبر، مفید برای سیستم عصبی</div>
+                </div>
+                
+                <div class="food-card" data-name="بادام">
+                    <div class="food-name">🌰 بادام</div>
+                    <div class="effect-badge beneficial">مفید در مقدار کم</div>
+                    <div class="description">منیزیم بالا و ویتامین E، ولی در مصرف زیاد ممکن است محرک باشد</div>
+                </div>
+                
+                <div class="food-card" data-name="گردو">
+                    <div class="food-name">🥜 گردو</div>
+                    <div class="effect-badge beneficial">مفید در مقدار کم</div>
+                    <div class="description">چربی مفید امگا ۳ و منیزیم، ولی زیادش محرک می‌شود</div>
+                </div>
+                
+                <div class="food-card" data-name="بادام زمینی">
+                    <div class="food-name">🥜 بادام زمینی</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">دارای تیرامین بالا و حساسیت‌زا، از مصرف آن پرهیز کنید</div>
+                </div>
+                
+                <div class="food-card" data-name="پسته">
+                    <div class="food-name">🌰 پسته</div>
+                    <div class="effect-badge neutral">نسبتاً ایمن</div>
+                    <div class="description">در مقدار کم مفید، حاوی منیزیم و چربی مفید</div>
+                </div>
+                
+                <div class="food-card" data-name="فندق">
+                    <div class="food-name">🌰 فندق</div>
+                    <div class="effect-badge beneficial">مفید در مقدار کم</div>
+                    <div class="description">ویتامین E بالا و منیزیم، محافظت از سلول‌های مغزی</div>
+                </div>
+                
+                <div class="food-card" data-name="کنجد">
+                    <div class="food-name">🌰 کنجد</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">کلسیم و منیزیم بالا، تقویت سیستم عصبی</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- گوشت و پروتئین -->
+        <div class="category" id="proteins">
+            <div class="food-grid">
+                <div class="food-card" data-name="گوشت قرمز تازه">
+                    <div class="food-name">🥩 گوشت قرمز تازه</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">اگر فرآوری نشده باشد محرک نیست، منبع خوب پروتئین و آهن</div>
+                </div>
+                
+                <div class="food-card" data-name="گوشت فرآوری شده">
+                    <div class="food-name">🌭 گوشت فرآوری شده</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">سوسیس، کالباس و ژامبون دارای نیتریت، مواد نگهدارنده و تیرامین بالا</div>
+                </div>
+                
+                <div class="food-card" data-name="مرغ تازه">
+                    <div class="food-name">🍗 مرغ تازه</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">منبع عالی پروتئین کامل و بدون محرک میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="ماهی سالمون">
+                    <div class="food-name">🐟 ماهی سالمون</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">چربی امگا ۳ ضد التهاب، محافظت از مغز و کاهش میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="تخم مرغ">
+                    <div class="food-name">🥚 تخم مرغ</div>
+                    <div class="effect-badge beneficial">مفید در مقدار کم</div>
+                    <div class="description">پروتئین کامل و کولین مفید برای مغز، ولی زیادش سنگینی می‌کند</div>
+                </div>
+                
+                <div class="food-card" data-name="ماهی دودی">
+                    <div class="food-name">🐟 ماهی دودی/کنسروی</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">فرآوری‌شده و حاوی تیرامین بالا و نمک زیاد</div>
+                </div>
+                
+                <div class="food-card" data-name="ماهی تون">
+                    <div class="food-name">🐟 ماهی تون تازه</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">امگا ۳ بالا و پروتئین کامل، ولی کنسروی آن محرک است</div>
+                </div>
+                
+                <div class="food-card" data-name="گوشت بره">
+                    <div class="food-name">🐑 گوشت بره</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">در صورت تازه بودن مشکلی ندارد، منبع خوب آهن</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- چربی‌ها -->
+        <div class="category" id="fats">
+            <div class="food-grid">
+                <div class="food-card" data-name="روغن زیتون">
+                    <div class="food-name">🫒 روغن زیتون</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">ضد التهاب قوی، امگا ۹ بالا و محافظت از عروق مغزی</div>
+                </div>
+                
+                <div class="food-card" data-name="روغن کنجد">
+                    <div class="food-name">🌰 روغن کنجد</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">در مقادیر کم مفید، تنظیم قند خون و ضد التهاب</div>
+                </div>
+                
+                <div class="food-card" data-name="کره حیوانی">
+                    <div class="food-name">🧈 کره حیوانی</div>
+                    <div class="effect-badge mild-trigger">محرک در مصرف زیاد</div>
+                    <div class="description">چربی اشباع بالا که در مصرف زیاد التهاب‌زا است</div>
+                </div>
+                
+                <div class="food-card" data-name="روغن‌های صنعتی">
+                    <div class="food-name">🏭 روغن‌های صنعتی</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">مارگارین و روغن سرخ‌کردنی التهاب‌زا و ایجادکننده رادیکال آزاد</div>
+                </div>
+                
+                <div class="food-card" data-name="روغن حیوانی">
+                    <div class="food-name">🥓 روغن حیوانی محلی</div>
+                    <div class="effect-badge neutral">فقط در مقدار کم</div>
+                    <div class="description">مصرف زیاد باعث التهاب می‌شود، بهتر محدود شود</div>
+                </div>
+                
+                <div class="food-card" data-name="روغن نارگیل">
+                    <div class="food-name">🥥 روغن نارگیل</div>
+                    <div class="effect-badge beneficial">مفید در مقدار کم</div>
+                    <div class="description">MCT مفید برای مغز، ولی در مصرف زیاد اشباع است</div>
+                </div>
+                
+                <div class="food-card" data-name="روغن آفتابگردان">
+                    <div class="food-name">🌻 روغن آفتابگردان</div>
+                    <div class="effect-badge neutral">متوسط</div>
+                    <div class="description">در مقدار کم مشکلی ندارد، ولی امگا ۶ بالا دارد</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- لبنیات -->
+        <div class="category" id="dairy">
+            <div class="food-grid">
+                <div class="food-card" data-name="شیر تازه">
+                    <div class="food-name">🥛 شیر تازه</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">منبع خوب کلسیم و پروتئین، مگر در افراد حساس به لاکتوز</div>
+                </div>
+                
+                <div class="food-card" data-name="ماست">
+                    <div class="food-name">🥛 ماست</div>
+                    <div class="effect-badge mild-trigger">محرک خفیف در برخی</div>
+                    <div class="description">اسیدی و دارای هیستامین که در برخی افراد حساس محرک است</div>
+                </div>
+                
+                <div class="food-card" data-name="پنیر تازه">
+                    <div class="food-name">🧀 پنیر تازه</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">پنیر سفید تازه مشکل‌ساز نیست، منبع خوب کلسیم</div>
+                </div>
+                
+                <div class="food-card" data-name="پنیر کهنه">
+                    <div class="food-name">🧀 پنیر کهنه</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">پارمزان، گودا و چدار دارای تیرامین بسیار بالا هستند</div>
+                </div>
+                
+                <div class="food-card" data-name="دوغ">
+                    <div class="food-name">🥛 دوغ</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">کمک به هیدراتاسیون و هضم، ولی بدون نمک زیاد مصرف شود</div>
+                </div>
+                
+                <div class="food-card" data-name="کشک">
+                    <div class="food-name">🥛 کشک</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">فرآوری‌شده و نمک بالا، در برخی افراد محرک میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="خامه">
+                    <div class="food-name">🍶 خامه</div>
+                    <div class="effect-badge mild-trigger">محرک خفیف</div>
+                    <div class="description">چربی اشباع بالا که در مصرف زیاد سنگینی می‌کند</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- نوشیدنی‌ها -->
+        <div class="category" id="drinks">
+            <div class="food-grid">
+                <div class="food-card" data-name="آب">
+                    <div class="food-name">💧 آب</div>
+                    <div class="effect-badge beneficial">مفید حیاتی</div>
+                    <div class="description">کم‌آبی یکی از قوی‌ترین تریگرهای میگرن است، حداقل ۸ لیوان در روز</div>
+                </div>
+                
+                <div class="food-card" data-name="چای سبز">
+                    <div class="food-name">🍵 چای سبز ملایم</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">آنتی‌اکسیدان بالا و آرام‌بخش، ولی پررنگ نباشد</div>
+                </div>
+                
+                <div class="food-card" data-name="چای پررنگ">
+                    <div class="food-name">☕ چای پررنگ</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">کافئین بالا و تانن زیاد که محرک قوی میگرن است</div>
+                </div>
+                
+                <div class="food-card" data-name="قهوه">
+                    <div class="food-name">☕ قهوه</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">کافئین زیاد و نوسانات خلقی ایجاد می‌کند، ترک ناگهانی هم محرک است</div>
+                </div>
+                
+                <div class="food-card" data-name="نوشابه">
+                    <div class="food-name">🥤 نوشابه</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">قند زیاد، آسپارتام و کافئین که ترکیب مخربی برای میگرن است</div>
+                </div>
+                
+                <div class="food-card" data-name="نوشیدنی انرژی‌زا">
+                    <div class="food-name">⚡ نوشیدنی انرژی‌زا</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">کافئین و افزودنی‌های زیاد که بسیار خطرناک برای میگرنی‌ها است</div>
+                </div>
+                
+                <div class="food-card" data-name="آب میوه طبیعی">
+                    <div class="food-name">🧃 آب میوه طبیعی</div>
+                    <div class="effect-badge neutral">متوسط</div>
+                    <div class="description">بستگی به نوع میوه دارد، بهتر رقیق شده مصرف شود</div>
+                </div>
+                
+                <div class="food-card" data-name="دمنوش گیاهی">
+                    <div class="food-name">🌿 دمنوش گیاهی</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">بابونه، زنجبیل و نعنا آرام‌بخش و ضد التهاب هستند</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- غلات -->
+        <div class="category" id="grains">
+            <div class="food-grid">
+                <div class="food-card" data-name="برنج قهوه‌ای">
+                    <div class="food-name">🍚 برنج قهوه‌ای</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">فیبر بالا، تنظیم قند خون و منیزیم مفید برای مغز</div>
+                </div>
+                
+                <div class="food-card" data-name="برنج سفید">
+                    <div class="food-name">🍚 برنج سفید</div>
+                    <div class="effect-badge neutral">ایمن</div>
+                    <div class="description">محرک نیست ولی قند خون را بالا می‌برد، محدود مصرف شود</div>
+                </div>
+                
+                <div class="food-card" data-name="نان سبوس‌دار">
+                    <div class="food-name">🍞 نان سبوس‌دار</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">فیبر بالا، منیزیم و ویتامین B که برای سیستم عصبی مفید است</div>
+                </div>
+                
+                <div class="food-card" data-name="نان سفید">
+                    <div class="food-name">🍞 نان سفید</div>
+                    <div class="effect-badge mild-trigger">محرک خفیف</div>
+                    <div class="description">قند خون را سریع بالا می‌برد و سپس افت ایجاد می‌کند</div>
+                </div>
+                
+                <div class="food-card" data-name="جو دوسر">
+                    <div class="food-name">🌾 جو دوسر</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">فیبر بالا، تنظیم قند خون و ضد التهاب</div>
+                </div>
+                
+                <div class="food-card" data-name="بلغور">
+                    <div class="food-name">🌾 بلغور</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">منبع خوب فیبر و منیزیم، انرژی پایدار می‌دهد</div>
+                </div>
+                
+                <div class="food-card" data-name="کینوا">
+                    <div class="food-name">🌾 کینوا</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">پروتئین کامل و منیزیم بالا، فوق‌العاده برای میگرنی‌ها</div>
+                </div>
+                
+                <div class="food-card" data-name="جو">
+                    <div class="food-name">🌾 جو</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">بتاگلوکان مفید، تنظیم کلسترول و قند خون</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ادویه‌ها -->
+        <div class="category" id="spices">
+            <div class="food-grid">
+                <div class="food-card" data-name="زنجبیل">
+                    <div class="food-name">🫚 زنجبیل</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">ضد التهاب قوی، کاهش تهوع و درد میگرن</div>
+                </div>
+                
+                <div class="food-card" data-name="زردچوبه">
+                    <div class="food-name">🟡 زردچوبه</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">کورکومین ضد التهاب، محافظت از مغز و کاهش درد</div>
+                </div>
+                
+                <div class="food-card" data-name="دارچین">
+                    <div class="food-name">🟤 دارچین</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">تنظیم قند خون و ضد التهاب، آرام‌بخش طبیعی</div>
+                </div>
+                
+                <div class="food-card" data-name="فلفل قرمز">
+                    <div class="food-name">🌶️ فلفل قرمز</div>
+                    <div class="effect-badge trigger">محرک</div>
+                    <div class="description">تند و تحریک‌کننده، در اکثر میگرنی‌ها محرک است</div>
+                </div>
+                
+                <div class="food-card" data-name="فلفل سیاه">
+                    <div class="food-name">⚫ فلفل سیاه</div>
+                    <div class="effect-badge mild-trigger">محرک خفیف</div>
+                    <div class="description">در مقدار کم مشکلی ندارد، ولی زیادش تحریک‌کننده است</div>
+                </div>
+                
+                <div class="food-card" data-name="نعنا">
+                    <div class="food-name">🌿 نعنا</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">خنک‌کننده، آرام‌بخش و کاهش‌دهنده درد سر</div>
+                </div>
+                
+                <div class="food-card" data-name="ریحان">
+                    <div class="food-name">🌿 ریحان</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">آرام‌بخش و ضد التهاب، تقویت سیستم عصبی</div>
+                </div>
+                
+                <div class="food-card" data-name="زعفران">
+                    <div class="food-name">🟡 زعفران</div>
+                    <div class="effect-badge beneficial">مفید</div>
+                    <div class="description">ضد افسردگی طبیعی، تنظیم خلق و کاهش استرس</div>
+                </div>
+                
+                <div class="food-card" data-name="MSG">
+                    <div class="food-name">🧂 MSG</div>
+                    <div class="effect-badge trigger">محرک قوی</div>
+                    <div class="description">مونوسدیم گلوتامات محرک شناخته‌شده میگرن، کاملاً اجتناب شود</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const categories = document.querySelectorAll('.category');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const categoryId = tab.getAttribute('data-category');
+                
+                // Remove active class from all tabs and categories
+                tabs.forEach(t => t.classList.remove('active'));
+                categories.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding category
+                tab.classList.add('active');
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
+        
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        const foodCards = document.querySelectorAll('.food-card');
+        
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            foodCards.forEach(card => {
+                const foodName = card.getAttribute('data-name').toLowerCase();
+                const description = card.querySelector('.description').textContent.toLowerCase();
+                
+                if (foodName.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // If search is empty, show all cards
+            if (searchTerm === '') {
+                foodCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-in forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Observe all food cards
+        foodCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add hover sound effect simulation
+        foodCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add click effect
+        foodCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.animation = 'bounce 0.6s ease-in-out';
+                setTimeout(() => {
+                    card.style.animation = '';
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
