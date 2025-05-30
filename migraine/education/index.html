@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 آموزش جامع میگرن | کنترل درد سر</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .migraine-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .type-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .type-card:hover::before {
+            animation: shine 0.8s ease;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        .type-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .food-item {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .food-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .good-foods {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+        }
+        
+        .tracker-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tips-list li {
+            background: rgba(102, 126, 234, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .tips-list li:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease;
+            animation: progressPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes progressPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .floating-icon {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4ecdc4;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav-tabs { flex-direction: column; align-items: center; }
+            .migraine-types, .food-grid { grid-template-columns: 1fr; }
+            .floating-icon { right: 20px; bottom: 20px; }
+        }
+
+        .education-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .education-card h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin: 20px 0 15px;
+        }
+
+        .education-card .tips-list {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .education-card .tips-list li {
+            background: none;
+            border: none;
+            color: white;
+            margin: 10px 0;
+            padding: 8px 0;
+        }
+
+        .education-card .tips-list li:hover {
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .education-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-table th,
+        .education-table td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .education-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .education-table td {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 آموزش جامع میگرن</h1>
+            <p>راهنمای کامل برای کنترل و پیشگیری از میگرن</p>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn" onclick="showTab('types')">🔍 انواع میگرن</button>
+            <button class="tab-btn" onclick="showTab('triggers')">⚠️ محرک‌ها</button>
+            <button class="tab-btn" onclick="showTab('foods')">🍎 تغذیه</button>
+            <button class="tab-btn" onclick="showTab('lifestyle')">💤 سبک زندگی</button>
+            <button class="tab-btn" onclick="showTab('tracker')">📊 ردیابی روزانه</button>
+        </div>
+        
+        <!-- انواع میگرن -->
+        <div id="types" class="tab-content active">
+            <div class="card">
+                <h2>🧠 انواع میگرن</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
+                    میگرن انواع مختلفی دارد که هر کدام علائم و مشخصات خاص خود را دارند
+                </p>
+                <div class="migraine-types">
+                    <div class="type-card">
+                        <span class="emoji">⚡</span>
+                        <h3>میگرن با اورا</h3>
+                        <p>قبل از شروع درد، علائمی مثل نورهای چشمک‌زن، بی‌حسی یا مشکلات بینایی ظاهر می‌شود</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="type-card">
+                        <span class="emoji">💥</span>
+                        <h3>میگرن بدون اورا</h3>
+                        <p>ناگهان و بدون هیچ هشداری شروع می‌شود و شایع‌ترین نوع میگرن است</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="type-card">
+                        <span class="emoji">🔄</span>
+                        <h3>میگرن مزمن</h3>
+                        <p>بیش از ۱۵ روز در ماه اتفاق می‌افتد و نیاز به مراقبت پزشکی دارد</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15%"></div>
+                        </div>
+                    </div>
+                    <div class="type-card">
+                        <span class="emoji">🌸</span>
+                        <h3>میگرن قاعدگی</h3>
+                        <p>مربوط به تغییرات هورمونی دوران پریود و معمولاً قابل پیش‌بینی است</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- علائم میگرن -->
+                <div class="education-card">
+                    <h3>🔍 علائم میگرن: فراتر از سردرد</h3>
+                    <p>میگرن یک بیماری عصبی–عروقی است که می‌تواند طیف گسترده‌ای از علائم داشته باشد، و همه‌ی آن‌ها لزوماً «سردرد» نیستند.</p>
+
+                    <h4>🔹 علائم اولیه (مرحله‌ی پیش‌هشدار یا Prodrome) — از چند ساعت تا دو روز قبل:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>تغییرات خلقی (افسردگی یا سرخوشی ناگهانی)</li>
+                            <li>بی‌قراری یا کلافگی</li>
+                            <li>میل شدید به غذاهای خاص (شکلات، نمک، شکر)</li>
+                            <li>یبوست یا اسهال</li>
+                            <li>تکرر ادرار</li>
+                            <li>خمیازه‌های زیاد</li>
+                            <li>خستگی، خواب‌آلودگی یا بی‌خوابی</li>
+                            <li>احساس سفتی گردن یا شانه‌ها</li>
+                            <li>بوی بد دهان (در اثر تغییرات گوارشی)</li>
+                        </ul>
+                    </div>
+
+                    <h4>🔹 علائم آئورا (Aura) — در ۲۰ تا ۳۰٪ افراد:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>دیدن نورهای چشمک‌زن، خطوط زیگ‌زاگی یا نقاط کور</li>
+                            <li>تاری دید یا از دست دادن موقتی بینایی</li>
+                            <li>گزگز یا بی‌حسی در صورت، دست، بازو یا زبان</li>
+                            <li>اشکال در گفتار یا ادای کلمات (مشابه سکته مغزی)</li>
+                            <li>گیجی یا عدم تمرکز شدید</li>
+                            <li>صدای زنگ در گوش یا حساسیت به صدا</li>
+                        </ul>
+                    </div>
+
+                    <h4>🔹 علائم حین حمله (Attack Phase):</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>سردرد ضربان‌دار (یک‌طرفه یا دوطرفه)</li>
+                            <li>تهوع، استفراغ</li>
+                            <li>حساسیت شدید به نور، صدا، بو، لمس</li>
+                            <li>احساس سبکی یا گیجی</li>
+                            <li>درد پشت چشم‌ها</li>
+                            <li>احساس فشار در سر یا چشم</li>
+                            <li>ضربان قلب بالا یا پایین</li>
+                            <li>افت ناگهانی قند خون</li>
+                            <li>مشکل در تعادل و سرگیجه</li>
+                            <li>اسپاسم عضلات گردن و پشت</li>
+                        </ul>
+                    </div>
+
+                    <h4>🔹 علائم بعد از حمله (Postdrome):</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>خستگی مفرط یا بی‌حالی شدید</li>
+                            <li>مشکلات حافظه یا کندی ذهن</li>
+                            <li>احساس افسردگی یا پوچی</li>
+                            <li>درد عضلات یا سفتی گردن</li>
+                            <li>اشکال در تمرکز یا تصمیم‌گیری</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- محرک‌ها -->
+        <div id="triggers" class="tab-content">
+            <div class="card">
+                <h2>⚠️ محرک‌های رایج میگرن</h2>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <span class="emoji">💡</span>
+                        <h3>نور شدید</h3>
+                        <p>آفتاب مستقیم، نور مانیتور، نورهای چشمک‌زن</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🌪️</span>
+                        <h3>استرس</h3>
+                        <p>تنش روانی، تغییرات ناگهانی، فشار کاری</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">😴</span>
+                        <h3>اختلال خواب</h3>
+                        <p>کم‌خوابی، پرخوابی، تغییر الگوی خواب</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🌡️</span>
+                        <h3>تغییرات آب‌وهوایی</h3>
+                        <p>تغییر فشار هوا، رطوبت، دما</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🍷</span>
+                        <h3>الکل</h3>
+                        <p>به خصوص شراب قرمز و نوشیدنی‌های تیره</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">💨</span>
+                        <h3>بوهای قوی</h3>
+                        <p>عطر، بنزین، دود، مواد شوینده</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- میگرن و قاعدگی -->
+            <div class="education-card">
+                <h3>👩‍⚕️ میگرن و قاعدگی (Menstrual Migraine)</h3>
+                <h4>🔍 چرا میگرن در دوران پریود بیشتر می‌شود؟</h4>
+                <ul class="tips-list">
+                    <li>کاهش سطح استروژن (به‌ویژه ۲ تا ۳ روز قبل از پریود)</li>
+                    <li>افت منیزیم بدن</li>
+                    <li>تغییرات در خواب و اشتها</li>
+                </ul>
+
+                <h4>✅ راهکارهای کنترل میگرن قبل از قاعدگی:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>مکمل منیزیم</td>
+                            <td>۳۰۰ تا ۴۰۰ میلی‌گرم در روز از ۳ تا ۵ روز قبل از پریود</td>
+                        </tr>
+                        <tr>
+                            <td>پیاده‌روی روزانه</td>
+                            <td>ورزش منظم و خواب کافی</td>
+                        </tr>
+                        <tr>
+                            <td>تغذیه مناسب</td>
+                            <td>پرهیز از قهوه، شکلات، قند و فست‌فود</td>
+                        </tr>
+                        <tr>
+                            <td>مکمل‌های غذایی</td>
+                            <td>افزایش مصرف مواد غذایی سرشار از منیزیم و B6 (سبزیجات برگ‌دار، بادام، آووکادو، موز، عدس)</td>
+                        </tr>
+                        <tr>
+                            <td>مدیتیشن</td>
+                            <td>مدیتیشن روزانه یا دوش آب گرم برای کاهش اسپاسم‌ها</td>
+                        </tr>
+                        <tr>
+                            <td>ثبت علائم</td>
+                            <td>ثبت علائم در اپ تقویم قاعدگی برای پیش‌بینی بهتر حملات</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- اختلال خواب و میگرن -->
+            <div class="education-card">
+                <h3>😴 اختلال خواب و میگرن</h3>
+                <h4>🔍 چرا خواب نامنظم باعث میگرن می‌شود؟</h4>
+                <ul class="tips-list">
+                    <li>مغز افراد میگرنی به تغییرات در ریتم شبانه‌روزی (circadian rhythm) حساس است.</li>
+                    <li>هم کم‌خوابی و هم خواب بیش‌ازحد باعث بی‌ثباتی در سروتونین و ملاتونین شده و احتمال حمله میگرن را بالا می‌برد.</li>
+                    <li>بی‌خوابی باعث تحریک سیستم عصبی سمپاتیک و کاهش آستانه درد می‌شود.</li>
+                </ul>
+
+                <h4>😖 علائم خاص میگرن ناشی از اختلال خواب:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>سردرد شدید صبحگاهی (مخصوصاً در پشت چشم یا پیشانی)</li>
+                        <li>احساس "مغز مه‌آلود"، حافظه ضعیف، کاهش تمرکز</li>
+                        <li>اضطراب یا تحریک‌پذیری شدید در صبح</li>
+                        <li>حالت تهوع، سفتی گردن یا شانه</li>
+                        <li>درد چشم‌ها یا سنگینی سر</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>ثبات در زمان خواب</td>
+                            <td>حفظ زمان ثابت خواب و بیداری حتی در تعطیلات</td>
+                        </tr>
+                        <tr>
+                            <td>خاموشی وسایل الکترونیکی</td>
+                            <td>خاموش‌کردن موبایل، تلویزیون و نور آبی حداقل ۱ ساعت قبل از خواب</td>
+                        </tr>
+                        <tr>
+                            <td>دمنوش‌های طبیعی</td>
+                            <td>استفاده از دمنوش‌های خواب‌آور طبیعی (گل گاوزبان، بابونه، اسطوخودوس)</td>
+                        </tr>
+                        <tr>
+                            <td>محیط خواب مناسب</td>
+                            <td>نور کم و خنکای محیط خواب برای تنظیم ملاتونین</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت بیداری شبانه</td>
+                            <td>در صورت بیدار شدن شبانه، عدم استفاده از موبایل و تکنیک تنفس عمیق ۴-۷-۸</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- الکل و میگرن -->
+            <div class="education-card">
+                <h3>🍷 الکل و میگرن</h3>
+                <h4>🔍 چرا الکل می‌تواند حمله میگرنی ایجاد کند؟</h4>
+                <ul class="tips-list">
+                    <li>الکل، به‌ویژه شراب قرمز، دارای تیرامین و هیستامین است که رگ‌های مغزی را گشاد می‌کنند.</li>
+                    <li>الکل باعث کم‌آبی بدن (دهیدراسیون) می‌شود و سطح قند خون را ناپایدار می‌کند.</li>
+                    <li>نوشیدنی‌های الکلی با کاهش منیزیم و افزایش التهاب عصبی همراه‌اند.</li>
+                </ul>
+
+                <h4>😖 علائم خاص میگرن ناشی از الکل:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>سردرد ضربانی ۱ تا ۱۲ ساعت بعد از نوشیدن</li>
+                        <li>احساس سفتی در گردن یا فک</li>
+                        <li>تشنگی شدید، تاری دید، زنگ زدن گوش</li>
+                        <li>احساس "مه‌آلود بودن" ذهن</li>
+                        <li>دل‌درد، تهوع و حساسیت به نور و صدا</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>پرهیز از الکل</td>
+                            <td>پرهیز کامل از الکل برای افراد مستعد میگرن</td>
+                        </tr>
+                        <tr>
+                            <td>هیدراتاسیون</td>
+                            <td>مصرف زیاد آب هم‌زمان برای پیشگیری از دهیدراسیون</td>
+                        </tr>
+                        <tr>
+                            <td>انتخاب نوشیدنی</td>
+                            <td>انتخاب نوشیدنی‌هایی با هیستامین و تیرامین پایین (در صورت اجبار)</td>
+                        </tr>
+                        <tr>
+                            <td>محیط مناسب</td>
+                            <td>اجتناب از ترکیب الکل با سیگار یا محیط‌های پرنور و شلوغ</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- تغییرات آب‌وهوایی و میگرن -->
+            <div class="education-card">
+                <h3>🌦️ تغییرات آب‌وهوایی و میگرن</h3>
+                <h4>🔍 چرا تغییرات آب‌وهوایی تریگر میگرن است؟</h4>
+                <ul class="tips-list">
+                    <li>تغییر فشار هوا، دما و رطوبت موجب تغییر فشار داخل جمجمه و گشاد شدن رگ‌های مغزی می‌شود.</li>
+                    <li>مغز میگرنی‌ها نسبت به نوسانات بارومتریک بسیار حساس است.</li>
+                    <li>تغییرات ناگهانی آب‌وهوایی می‌تواند تعادل الکترولیت‌ها و هورمون‌ها را بر هم زند.</li>
+                </ul>
+
+                <h4>🌬️ علائم خاص میگرن ناشی از تغییرات آب‌وهوایی:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>سردردهای بدون دلیل ظاهری در روزهای ابری یا گرم</li>
+                        <li>سنگینی یا فشار در سینوس‌ها یا روی چشم</li>
+                        <li>احساس گیجی، تنگی نفس، ضعف یا خستگی شدید</li>
+                        <li>کاهش تمرکز و بی‌حوصلگی شدید</li>
+                        <li>تحریک‌پذیری یا خلق افسرده</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>پایش آب‌وهوا</td>
+                            <td>استفاده از اپ‌های پیش‌بینی فشار هوا (مثل Weather Underground)</td>
+                        </tr>
+                        <tr>
+                            <td>هیدراتاسیون و مکمل</td>
+                            <td>مصرف منظم آب و مکمل منیزیم در روزهای خاص</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت گرما</td>
+                            <td>استراحت در مکان خنک، اجتناب از فعالیت شدید، استفاده از کمپرس سرد</td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت سرما</td>
+                            <td>پوشاندن پیشانی، استنشاق بخار آرام، پرهیز از خروج غیرضروری</td>
+                        </tr>
+                        <tr>
+                            <td>ثبت علائم</td>
+                            <td>ثبت رابطه بین تغییرات آب‌وهوا و علائم در دفتر میگرن</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- استرس و میگرن -->
+            <div class="education-card">
+                <h3>😫 استرس و میگرن</h3>
+                <h4>🔍 چرا استرس باعث میگرن می‌شود؟</h4>
+                <ul class="tips-list">
+                    <li>استرس باعث افزایش ناگهانی کورتیزول و آدرنالین می‌شود.</li>
+                    <li>این تغییرات ناگهانی موجب انقباض و سپس گشاد شدن غیرعادی رگ‌های مغزی می‌شود.</li>
+                    <li>افت ناگهانی کورتیزول (مثلاً در تعطیلات یا پس از یک هفته پرتنش) نیز میگرن به‌ظاهر بی‌دلیل ایجاد می‌کند. به این حالت "میگرن آخر هفته" می‌گویند.</li>
+                </ul>
+
+                <h4>🧠 علائم خاص میگرن ناشی از استرس:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>فشار در شقیقه‌ها یا پشت سر</li>
+                        <li>گیجی، فراموشی، کاهش تمرکز</li>
+                        <li>لرزش دست، تعریق، دل‌درد عصبی</li>
+                        <li>احساس گیر کردن گلوی روانی یا اشکال در بلع</li>
+                        <li>بی‌خوابی یا خواب زیاد</li>
+                        <li>حالت تهوع بدون دلیل مشخص</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>تنفس عمیق ۴-۷-۸</td>
+                            <td>چهار ثانیه دم، هفت ثانیه نگه‌داشتن، هشت ثانیه بازدم – ۳ بار در روز</td>
+                        </tr>
+                        <tr>
+                            <td>مدیتیشن روزانه</td>
+                            <td>۱۰ دقیقه‌ای یا گوش دادن به موسیقی آرام</td>
+                        </tr>
+                        <tr>
+                            <td>پیاده‌روی</td>
+                            <td>در فضای باز حتی کوتاه (۵ تا ۱۰ دقیقه)</td>
+                        </tr>
+                        <tr>
+                            <td>نوشتن روزانه</td>
+                            <td>در دفترچه، به‌ویژه قبل از خواب</td>
+                        </tr>
+                        <tr>
+                            <td>مکمل‌های طبیعی</td>
+                            <td>بادرنجبویه، منیزیم، چای بابونه</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- نور و میگرن -->
+            <div class="education-card">
+                <h3>💡 نور و میگرن (Photophobia)</h3>
+                <h4>🔍 چرا نور می‌تواند محرک میگرن باشد؟</h4>
+                <ul class="tips-list">
+                    <li>در افراد مستعد میگرن، سلول‌های شبکیه چشم و قشر بینایی مغز به نور بیش‌ازحد یا نورهای خاص بیش‌ازحد حساس هستند.</li>
+                    <li>نورهای فلش‌دار، نورهای LED آبی، نور مهتابی یا نور آفتاب مستقیم می‌توانند محرک باشند.</li>
+                </ul>
+
+                <h4>💥 علائم خاص میگرن ناشی از نور:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>چشم‌درد، اشک‌ریزش، انقباض عضلات پیشانی</li>
+                        <li>تاری دید یا دیدن نقاط نورانی (Aura)</li>
+                        <li>سردردی که بعد از ورود به محیط پرنور شروع می‌شود</li>
+                        <li>خستگی چشم و کاهش تمرکز</li>
+                        <li>پلک‌زدن زیاد یا حساسیت به نور صفحه موبایل و مانیتور</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>عینک ضد نور آبی</td>
+                            <td>برای استفاده از کامپیوتر و موبایل</td>
+                        </tr>
+                        <tr>
+                            <td>کاهش نور موبایل</td>
+                            <td>به کمترین حد مجاز</td>
+                        </tr>
+                        <tr>
+                            <td>کنترل نور محیط</td>
+                            <td>بستن پرده‌ها در روزهای آفتابی شدید یا استفاده از عینک آفتابی</td>
+                        </tr>
+                        <tr>
+                            <td>حالت تاریک</td>
+                            <td>استفاده از dark mode در اپلیکیشن‌ها و نرم‌افزارها</td>
+                        </tr>
+                        <tr>
+                            <td>فیلتر نور آبی</td>
+                            <td>نصب فیلتر یا اپلیکیشن‌هایی مثل f.lux روی لپ‌تاپ</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- صدا و میگرن -->
+            <div class="education-card">
+                <h3>🔊 صدا و میگرن (Phonophobia)</h3>
+                <h4>🔍 چرا صداهای بلند یا ناگهانی باعث میگرن می‌شوند؟</h4>
+                <ul class="tips-list">
+                    <li>سیستم عصبی افراد میگرنی به شدت به تحریکات حسی پاسخ می‌دهد.</li>
+                    <li>صداهای زیاد، نامنظم یا شدید (مثل صدای بوق، تلویزیون بلند، یا شلوغی زیاد) باعث فعال شدن بیش از حد نورون‌ها و ایجاد درد می‌شوند.</li>
+                </ul>
+
+                <h4>🎧 علائم خاص میگرن ناشی از صدا:</h4>
+                <div class="tip-box">
+                    <ul>
+                        <li>تحریک‌پذیری روانی سریع</li>
+                        <li>احساس پرفشاری در گوش یا سر</li>
+                        <li>تهوع یا دل‌درد عصبی هنگام حضور در جمع شلوغ</li>
+                        <li>زنگ زدن گوش (Tinnitus) یا احساس خالی شدن گوش</li>
+                        <li>سردرد بعد از مهمانی‌ها یا محیط‌های شلوغ مثل بازار، مترو، کنسرت</li>
+                    </ul>
+                </div>
+
+                <h4>✅ راهکارهای کنترل:</h4>
+                <div class="education-table">
+                    <table>
+                        <tr>
+                            <th>روش</th>
+                            <th>توضیح</th>
+                        </tr>
+                        <tr>
+                            <td>گوش‌گیر سیلیکونی</td>
+                            <td>استفاده در محیط‌های پرصدا (مثل مراسم یا جلسات شلوغ)</td>
+                        </tr>
+                        <tr>
+                            <td>موسیقی آرام</td>
+                            <td>گوش دادن به موسیقی آرام در هدفون (سفید، قهوه‌ای یا باران)</td>
+                        </tr>
+                        <tr>
+                            <td>کنترل صدا</td>
+                            <td>پرهیز از تلویزیون یا موسیقی با صدای بلند</td>
+                        </tr>
+                        <tr>
+                            <td>محیط ساکت</td>
+                            <td>ایجاد محیط ساکت و کنترل‌شده در خانه</td>
+                        </tr>
+                        <tr>
+                            <td>پرهیز از شلوغی</td>
+                            <td>اجتناب از حضور طولانی در مکان‌هایی مانند بازار یا خیابان‌های شلوغ</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- تغذیه -->
+        <div id="foods" class="tab-content">
+            <div class="card">
+                <h2>🍎 راهنمای تغذیه</h2>
+                <p style="text-align: center; margin-bottom: 20px;">
+                    برای اطلاعات جامع‌تر درباره تأثیر مواد غذایی بر میگرن، به 
+                    <a href="https://personalized-smart-medicine.vercel.app/migraine" target="_blank" style="color: #667eea; text-decoration: none; font-weight: bold;">راهنمای تأثیر مواد غذایی بر میگرن</a> 
+                    مراجعه کنید.
+                </p>
+                <h3 style="color: #f5576c; margin-bottom: 20px;">❌ غذاهای محرک</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <span class="emoji">🧀</span>
+                        <h3>پنیرهای کهنه</h3>
+                        <p>چدار، پارمزان، روکفور - حاوی تیرامین</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🍫</span>
+                        <h3>شکلات</h3>
+                        <p>به ویژه شکلات تلخ - حاوی کافئین و تئوبرومین</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🥓</span>
+                        <h3>غذاهای فرآوری‌شده</h3>
+                        <p>سوسیس، کالباس، کنسروها - حاوی نیترات</p>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🥤</span>
+                        <h3>نوشابه‌های رژیمی</h3>
+                        <p>حاوی آسپارتام و شیرین‌کننده‌های مصنوعی</p>
+                    </div>
+                </div>
+                
+                <h3 style="color: #4ecdc4; margin: 30px 0 20px;">✅ غذاهای مفید</h3>
+                <div class="food-grid">
+                    <div class="food-item good-foods">
+                        <span class="emoji">🐟</span>
+                        <h3>ماهی‌های چرب</h3>
+                        <p>سالمون، ماهی تن - غنی از امگا ۳</p>
+                    </div>
+                    <div class="food-item good-foods">
+                        <span class="emoji">🥬</span>
+                        <h3>سبزیجات برگ‌سبز</h3>
+                        <p>اسفناج، کلم - منبع منیزیم و فولات</p>
+                    </div>
+                    <div class="food-item good-foods">
+                        <span class="emoji">🥜</span>
+                        <h3>آجیل و دانه‌ها</h3>
+                        <p>بادام، گردو - غنی از منیزیم و ویتامین E</p>
+                    </div>
+                    <div class="food-item good-foods">
+                        <span class="emoji">💧</span>
+                        <h3>آب فراوان</h3>
+                        <p>حداقل ۸ لیوان در روز - پیشگیری از کم‌آبی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- سبک زندگی -->
+        <div id="lifestyle" class="tab-content">
+            <div class="card">
+                <h2>🧠 راهنمای جامع سبک زندگی برای کنترل میگرن</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
+                    از منظر علمی و بالینی
+                </p>
+
+                <div class="education-card">
+                    <h3>🔍 مقدمه</h3>
+                    <p>میگرن یک بیماری عصبی مزمن است که فقط به سردرد محدود نمی‌شود. طیف وسیعی از علائم قبل، حین یا بعد از حمله ممکن است دیده شود: از تاری دید، خستگی، کلافگی، افسردگی، تهوع، اختلال تمرکز و حافظه گرفته تا احساس سبکی در سر یا سنگینی چشم‌ها.</p>
+                    <p><strong>کنترل کامل میگرن فقط با دارو ممکن نیست</strong>؛ بلکه نیازمند تغییر سبک زندگی است. هدف این راهنما آموزش علمی و کاربردی به فرد میگرنی برای <strong>شناسایی محرک‌ها، پیشگیری از حمله‌ها و کنترل آن‌ها به‌صورت فعال</strong> است.</p>
+                </div>
+
+                <div class="education-card">
+                    <h3>🛌 ۱. تنظیم خواب و ریتم شبانه‌روزی</h3>
+                    <p>اختلال خواب یکی از اصلی‌ترین محرک‌های میگرن است. نه فقط کم‌خوابی، بلکه خواب زیاد یا تغییر ساعت خواب هم می‌تواند باعث حمله شود.</p>
+                    <h4>✅ راهکارها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li><strong>ساعت خواب و بیداری منظم</strong> (حتی در تعطیلات)</li>
+                            <li>خواب بین ۶٫۵ تا ۸ ساعت، بدون چرت‌های طولانی روزانه</li>
+                            <li>محیط خواب تاریک، ساکت و خنک</li>
+                            <li>اجتناب از <strong>نور آبی گوشی و لپ‌تاپ</strong> حداقل ۱ ساعت قبل از خواب</li>
+                            <li>عدم مصرف قهوه، چای پررنگ یا شکلات از عصر به بعد</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>⚡ ۲. مدیریت استرس روزمره</h3>
+                    <p>استرس مزمن یا ناگهانی از مهم‌ترین عوامل محرک است. حتی <strong>کاهش ناگهانی استرس (مثلاً پس از امتحان)</strong> هم می‌تواند تریگر باشد.</p>
+                    <h4>✅ راهکارها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>تمرین <strong>تنفس دیافراگمی (۳ دقیقه صبح و شب)</strong></li>
+                            <li><strong>مدیتیشن، یوگا ملایم، دعا یا ذکر</strong> برای آرام‌سازی ذهن</li>
+                            <li>برنامه‌ریزی روزانه و اولویت‌بندی وظایف</li>
+                            <li>دوری از موقعیت‌های سمی، تنش‌زا و آدم‌های منفی</li>
+                            <li>در صورت نیاز، مشاوره روان‌شناسی یا روان‌درمانی شناختی رفتاری (CBT)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>🍽 ۳. تغذیه منظم و پرهیز از تریگرهای غذایی</h3>
+                    <p>افزایش یا کاهش ناگهانی قند خون (هیپو یا هایپرگلیسمی) یکی از رایج‌ترین تریگرهاست.</p>
+                    <h4>✅ راهکارها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>خوردن وعده‌ها و میان‌وعده‌ها در <strong>ساعت‌های مشخص</strong></li>
+                            <li><strong>قدم زدن ۵ دقیقه‌ای بعد از هر وعده غذایی</strong> (حتی در منزل) برای ثبات قند خون</li>
+                            <li>اجتناب از گرسنگی طولانی، حذف وعده یا پرخوری ناگهانی</li>
+                        </ul>
+                    </div>
+
+                    <h4>🚫 غذاهای رایج محرک:</h4>
+                    <div class="warning-box">
+                        <ul>
+                            <li>شکلات، قهوه، نوشابه‌های رژیمی (آسپارتام)</li>
+                            <li>پنیر مانده (پارمزان، بلوچیز)، سوسیس و کالباس (نیترات)</li>
+                            <li>غذاهای چینی یا فست‌فودها (حاوی MSG)</li>
+                            <li>شراب قرمز، موز، مرکبات در برخی افراد</li>
+                        </ul>
+                    </div>
+
+                    <p>💡 توصیه: در فرم های روزانه ی ما که به منظور ثبت وعده های غذایی و حمله میگرن برای شناسایی تریگرهای شخصی طراحی شده حتما روزانه وضعیت جسمی خودتون رو ثبت کنید.</p>
+                </div>
+
+                <div class="education-card">
+                    <h3>🌡 ۴. شرایط محیطی: نور، صدا، آب‌وهوا</h3>
+                    <p>مغز بیماران میگرنی حساس‌تر به محیط است.</p>
+                    <h4>✅ راهکارها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>اجتناب از نور فلورسنت، نور چشمک‌زن یا مستقیم خورشید</li>
+                            <li>استفاده از عینک آفتابی، عینک مخصوص فیلتر نور آبی هنگام کار با صفحه نمایش</li>
+                            <li>پرهیز از محیط‌های شلوغ و پرسروصدا (کنسرت، بازار، ترافیک سنگین)</li>
+                            <li>اگر صدا محرک است، استفاده از <strong>ایرفون یا صداهای سفید</strong></li>
+                            <li>در تغییرات آب‌وهوایی شدید (رطوبت یا فشار هوا) برنامه‌ها را سبک کنید و هیدراته بمانید</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>🏃‍♀️ ۵. فعالیت بدنی اصولی</h3>
+                    <p>ورزش منظم باعث کاهش دفعات حمله می‌شود، ولی ورزش شدید یا ناگهانی خود می‌تواند محرک باشد.</p>
+                    <h4>✅ توصیه‌ها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li><strong>پیاده‌روی منظم ۳۰ دقیقه‌ای، شنا آرام، یوگا</strong></li>
+                            <li>ورزش در هوای تازه یا با تهویه کافی</li>
+                            <li>قبل از شروع ورزش حتماً <strong>آب کافی</strong> بنوشید</li>
+                            <li>از ورزش سنگین بدون گرم‌کردن یا در هوای گرم پرهیز کنید</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>🧘‍♀️ ۶. زندگی منظم و بدون نوسان</h3>
+                    <p>ریتم زندگی بی‌برنامه، خواب بی‌قاعده، گرسنگی ناگهانی یا استرس شغلی ناگهانی = همگی می‌توانند حمله ایجاد کنند.</p>
+                    <h4>✅ ساختار زندگی سالم:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>خواب، وعده غذایی و ورزش در <strong>ساعت‌های مشخص</strong></li>
+                            <li>برنامه‌ریزی شبانه برای فردا</li>
+                            <li>حذف چالش‌ها یا وظایف غیرضروری</li>
+                            <li>تعیین تایم ریلکس برای خود (حمام گرم، موزیک آرام، کتاب)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>👩‍⚕️ ۷. مدیریت میگرن در زنان (هورمونی)</h3>
+                    <p>نوسانات هورمونی (مخصوصاً کاهش استروژن قبل قاعدگی) در زنان می‌تواند حمله ایجاد کند.</p>
+                    <h4>✅ راهکارها:</h4>
+                    <div class="tip-box">
+                        <ul>
+                            <li>شروع مصرف مکمل گل مغربی (۵۰۰ تا ۱۰۰۰ میلی‌گرم) از <strong>۳ روز قبل از پریود</strong> تا ۳ روز بعد</li>
+                            <li>ویتامین B6 و E هم می‌توانند مؤثر باشند</li>
+                            <li><strong>داشتن تقویم پریود برای پیش‌بینی حملات</strong> و آمادگی دارویی یا رفتاری</li>
+                            <li>در میگرن‌های مقاوم قاعدگی‌محور، استفاده از قرص‌های هورمونی با مشورت پزشک</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>💊 ۸. مکمل‌ها و داروهای پیشگیری (با نظر پزشک)</h3>
+                    <p>در میگرن‌های مکرر، برخی مکمل‌ها به کاهش شدت و دفعات حمله کمک می‌کنند:</p>
+                    <div class="tip-box">
+                        <ul>
+                            <li><strong>منیزیم</strong> (۳۰۰ تا ۴۰۰ میلی‌گرم روزانه)</li>
+                            <li><strong>ویتامین B2 (ریبوفلاوین)</strong> 400mg</li>
+                            <li><strong>کوآنزیم Q10</strong></li>
+                            <li><strong>گل مغربی</strong> مخصوصاً در میگرن‌های قاعدگی‌محور</li>
+                        </ul>
+                    </div>
+
+                    <h4>🌸 نقش گل مغربی (Evening Primrose Oil) در میگرن</h4>
+                    <h5>✅ فواید احتمالی:</h5>
+                    <p>گل مغربی منبع غنی گاما-لینولنیک اسید (GLA) است که در تنظیم هورمون‌ها مؤثر است.</p>
+                    <p>می‌تواند در خانم‌هایی که میگرن هورمونی دارند (یعنی حملاتشان در حوالی پریود رخ می‌دهد) به کاهش شدت و دفعات کمک کند.</p>
+
+                    <h5>💊 دوز پیشنهادی:</h5>
+                    <p>روزانه ۵۰۰ تا ۱۰۰۰ میلی‌گرم (با مشورت پزشک)</p>
+                    <p>بهتر است حداقل ۲ تا ۳ ماه مداوم مصرف شود تا تأثیر آن مشخص شود</p>
+
+                    <h5>⚠️ هشدار:</h5>
+                    <p>افراد با اختلالات انعقادی، فشار خون پایین، یا استفاده از داروهای ضدانعقاد (مثل وارفارین) باید با احتیاط مصرف کنند.</p>
+
+                    <p>💡 پیش از شروع هر مکمل، با پزشک مشورت کنید. برخی بیماران به آن‌ها حساس‌اند یا با داروهایشان تداخل دارد.</p>
+                </div>
+
+                <div class="education-card">
+                    <h3>📝 علائمی که باید جدی گرفته شوند (هشدار اورژانسی)</h3>
+                    <div class="warning-box">
+                        <ul>
+                            <li>شروع ناگهانی و شدید ("انفجاری") سردرد</li>
+                            <li>تغییر الگوی سردرد سابق</li>
+                            <li>سردرد همراه با تب، سفتی گردن یا تاری دید دائم</li>
+                            <li>شروع سردرد بعد از ۵۰ سالگی</li>
+                            <li>سردرد با اختلال در بینایی، تکلم یا تعادل</li>
+                        </ul>
+                    </div>
+                    <p>در صورت مشاهده این موارد، <strong>فوراً به اورژانس مراجعه کنید.</strong></p>
+                </div>
+
+                <div class="education-card">
+                    <h3>📱 ابزارهای کمکی مدرن</h3>
+                    <div class="tip-box">
+                        <ul>
+                            <li>فرم هایی که ما براتون هر روز میفرستیم</li>
+                            <li>دفترچه روزانه شامل:
+                                <ul>
+                                    <li>تاریخ و ساعت حمله</li>
+                                    <li>علائم</li>
+                                    <li>غذا، خواب، استرس آن روز</li>
+                                    <li>آب‌وهوا و محرک‌های احتمالی</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>🔚 جمع‌بندی</h3>
+                    <p>میگرن یک بیماری نورولوژیک مزمن است، اما با تغییر سبک زندگی می‌توان آن را <strong>قابل پیش‌بینی، قابل مدیریت و قابل تحمل</strong> کرد. هر بیمار باید با شناخت بدن خود، الگوی اختصاصی تریگرهایش را بشناسد و یک سبک زندگی پایدار برای مغز خود طراحی کند.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ردیابی روزانه -->
+        <div id="tracker" class="tab-content">
+            <div class="card">
+                <h2>📊 ردیابی روزانه میگرن</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin: 20px 0;">
+                    با ثبت روزانه اطلاعات، الگوهای میگرن خود را بشناسید
+                </p>
+                <p style="text-align: center; font-size: 1.1rem; margin: 20px 0;">
+                    با توجه به تحلیل وضعیت سلامتیتون، فرم‌های روزانه‌ی شخصی‌سازی شده براتون ارسال میشه
+                </p>
+            </div>
+        </div>
+        
+        <!-- نکات مهم -->
+        <div id="tips" class="tab-content">
+            <div class="card">
+                <h2>💡 نکات مهم برای کنترل میگرن</h2>
+                <ul class="tips-list">
+                    <li>
+                        <strong>🚨 هشدار فوری:</strong> اگر میگرن با تب، سفتی گردن یا مشکلات بینایی همراه شد، فوراً به پزشک مراجعه کنید
+                    </li>
+                    <li>
+                        <strong>📱 اپلیکیشن‌ها:</strong> از اپلیکیشن‌های ردیابی میگرن استفاده کنید تا الگوها را بهتر بشناسید
+                    </li>
+                    <li>
+                        <strong>🥽 عینک آفتابی:</strong> همیشه عینک آفتابی با کیفیت همراه داشته باشید
+                    </li>
+                    <li>
+                        <strong>💊 داروها:</strong> داروهای ضد درد را بیش از حد مصرف نکنید - می‌تواند میگرن بازگشتی ایجاد کند
+                    </li>
+                    <li>
+                        <strong>🏥 پزشک متخصص:</strong> اگر میگرن‌هایتان تشدید شد، حتماً با نورولوژیست مشورت کنید
+                    </li>
+                    <li>
+                        <strong>🧊 کمپرس سرد:</strong> کمپرس سرد روی پیشانی می‌تواند درد را کاهش دهد
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="floating-icon" onclick="scrollToTop()">⬆️</div>
+    
+    <div id="notification" class="notification">
+        اطلاع
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Pain level value display
+        function updatePainValue(value) {
+            document.getElementById('pain-value').textContent = value;
+        }
+
+        // Form submission handling
+        document.getElementById('migraineForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                date: document.getElementById('date').value,
+                painLevel: document.getElementById('pain-level').value,
+                duration: document.getElementById('duration').value,
+                triggers: Array.from(document.getElementById('triggers').selectedOptions).map(option => option.value),
+                foodsEaten: document.getElementById('foods-eaten').value,
+                sleepHours: document.getElementById('sleep-hours').value,
+                waterIntake: document.getElementById('water-intake').value,
+                notes: document.getElementById('notes').value
+            };
+            
+            let savedData = JSON.parse(localStorage.getItem('migraineData') || '[]');
+            savedData.push(formData);
+            localStorage.setItem('migraineData', JSON.stringify(savedData));
+            
+            const notification = document.getElementById('notification');
+            notification.textContent = 'اطلاعات با موفقیت ثبت شد!';
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            displaySavedData();
+            this.reset();
+            document.getElementById('pain-value').textContent = '0';
+        });
+
+        // Display saved data
+        function displaySavedData() {
+            const dataList = document.getElementById('data-list');
+            const savedData = JSON.parse(localStorage.getItem('migraineData') || '[]');
+            
+            dataList.innerHTML = savedData.map((data, index) => `
+                <div class="card" style="margin-bottom: 15px;">
+                    <h3>📅 ${data.date}</h3>
+                    <p>💯 شدت درد: ${data.painLevel}/10</p>
+                    <p>⏱️ مدت زمان: ${data.duration} ساعت</p>
+                    <p>⚠️ محرک‌ها: ${data.triggers.join(', ')}</p>
+                    <p>🍽️ غذاها: ${data.foodsEaten}</p>
+                    <p>😴 خواب: ${data.sleepHours} ساعت</p>
+                    <p>💧 آب: ${data.waterIntake} لیوان</p>
+                    <p>📝 یادداشت: ${data.notes}</p>
+                    <button onclick="deleteEntry(${index})" class="btn" style="background: linear-gradient(135deg, #f5576c, #f093fb);">🗑️ حذف</button>
+                </div>
+            `).join('');
+        }
+
+        // Delete entry
+        function deleteEntry(index) {
+            let savedData = JSON.parse(localStorage.getItem('migraineData') || '[]');
+            savedData.splice(index, 1);
+            localStorage.setItem('migraineData', JSON.stringify(savedData));
+            displaySavedData();
+        }
+
+        // Export to CSV
+        function exportToGoogleSheets() {
+            const savedData = JSON.parse(localStorage.getItem('migraineData') || '[]');
+            if (savedData.length === 0) {
+                alert('هیچ داده‌ای برای صادرات وجود ندارد!');
+                return;
+            }
+            
+            const headers = ['تاریخ', 'شدت درد', 'مدت زمان', 'محرک‌ها', 'غذاها', 'ساعات خواب', 'مصرف آب', 'یادداشت'];
+            const csvContent = [
+                headers.join(','),
+                ...savedData.map(data => [
+                    data.date,
+                    data.painLevel,
+                    data.duration,
+                    data.triggers.join(';'),
+                    data.foodsEaten,
+                    data.sleepHours,
+                    data.waterIntake,
+                    data.notes
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'migraine_data.csv';
+            link.click();
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize
+        displaySavedData();
+    </script>
+</body>
+</html>
