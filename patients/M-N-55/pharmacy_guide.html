@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای داروهای درمانی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: backgroundShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+            50% { background: linear-gradient(135deg, #f093fb 0%, #667eea 50%, #764ba2 100%); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            animation: slideUp 1s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.5)); }
+        }
+        
+        .drug-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .drug-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            animation: gradientShift 4s ease infinite;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .drug-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .drug-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .drug-title {
+            color: #2d3748;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .drug-icon {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .side-effects {
+            margin: 20px 0;
+        }
+        
+        .effect-category {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .common-effects {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-left: 5px solid #f56565;
+        }
+        
+        .serious-effects {
+            background: linear-gradient(135deg, #fffaf0 0%, #fbd38d 100%);
+            border-left: 5px solid #ed8936;
+        }
+        
+        .effect-category:hover {
+            transform: translateX(-10px);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .effect-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .effect-list {
+            list-style: none;
+            padding-right: 20px;
+        }
+        
+        .effect-list li {
+            margin-bottom: 8px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+        }
+        
+        .effect-list li:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-right-color: #667eea;
+            transform: translateX(-5px);
+        }
+        
+        .combination-warning {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 2px solid #38b2ac;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .combination-warning::before {
+            content: '⚠️';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .recommendations-title {
+            color: #2f855a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .recommendation-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recommendation-table th,
+        .recommendation-table td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .recommendation-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .recommendation-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .floating-pills {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .pill-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .pill-2 { top: 60%; left: 85%; animation-delay: 2s; }
+        .pill-3 { top: 80%; left: 20%; animation-delay: 4s; }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .drug-title {
+                font-size: 1.5rem;
+            }
+            
+            .recommendation-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-pills pill-1">💊</div>
+    <div class="floating-pills pill-2">💉</div>
+    <div class="floating-pills pill-3">🏥</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>راهنمای جامع داروهای درمانی</h1>
+            <p style="color: #718096; font-size: 1.1rem;">اطلاعات کامل عوارض و توصیه‌های مصرف</p>
+        </div>
+        
+        <div class="drug-card">
+            <div class="drug-title">
+                <span class="drug-icon">🔹</span>
+                ۱. آسنترا (سرترالین) – SSRI ضدافسردگی
+            </div>
+            
+            <div class="side-effects">
+                <div class="effect-category common-effects">
+                    <div class="effect-title">
+                        <span>⚠️</span>
+                        عوارض شایع:
+                    </div>
+                    <ul class="effect-list">
+                        <li>تهوع، سردرد، خشکی دهان</li>
+                        <li>اختلال خواب یا بی‌خوابی</li>
+                        <li>کاهش میل جنسی یا اختلال عملکرد جنسی</li>
+                        <li>بی‌قراری یا اضطراب اولیه</li>
+                        <li>تعریق زیاد</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="drug-card">
+            <div class="drug-title">
+                <span class="drug-icon">🔹</span>
+                ۲. توپیرامات – داروی ضدصرع و پیشگیری از میگرن
+            </div>
+            
+            <div class="side-effects">
+                <div class="effect-category common-effects">
+                    <div class="effect-title">
+                        <span>⚠️</span>
+                        عوارض شایع:
+                    </div>
+                    <ul class="effect-list">
+                        <li><strong>مه‌ذهنی</strong> (brain fog)، کاهش تمرکز</li>
+                        <li>احساس گزگز دست‌و‌پا</li>
+                        <li>کاهش وزن</li>
+                        <li>کاهش اشتها</li>
+                        <li>طعم فلزی در دهان</li>
+                        <li>خستگی</li>
+                    </ul>
+                </div>
+                
+                <div class="effect-category serious-effects">
+                    <div class="effect-title">
+                        <span>⚠️</span>
+                        عوارض جدی:
+                    </div>
+                    <ul class="effect-list">
+                        <li><strong>سنگ کلیه</strong> (افزایش احتمال تشکیل سنگ کلیه)</li>
+                        <li>اختلال گفتار یا لکنت</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="drug-card">
+            <div class="drug-title">
+                <span class="drug-icon">🔹</span>
+                ۳. سدیم والپرات (دپاکین، والپروات سدیم)
+            </div>
+            
+            <div class="side-effects">
+                <div class="effect-category common-effects">
+                    <div class="effect-title">
+                        <span>⚠️</span>
+                        عوارض شایع:
+                    </div>
+                    <ul class="effect-list">
+                        <li><strong>افزایش وزن قابل‌توجه</strong></li>
+                        <li><strong>ریزش مو (نازک شدن مو)</strong></li>
+                        <li>لرزش دست</li>
+                        <li>خواب‌آلودگی</li>
+                        <li>اختلال قاعدگی</li>
+                        <li>تهوع، سوءهاضمه</li>
+                        <li>لک‌های پوستی</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="combination-warning">
+            <div class="effect-title">
+                <span>⚠️</span>
+                ترکیب این داروها ممکن است:
+            </div>
+            <ul class="effect-list">
+                <li>خواب‌آلودگی یا خستگی را تشدید کند</li>
+                <li>تمرکز ذهنی را کاهش دهد</li>
+                <li>مشکلات گوارشی (مثل نفخ و درد معده) را افزایش دهد</li>
+                <li>اختلال خلق، بی‌خوابی یا کاهش انگیزه ایجاد کند</li>
+            </ul>
+        </div>
+        
+        <div class="recommendations">
+            <div class="recommendations-title">
+                <span>✅</span>
+                توصیه‌های عملی برای مدیریت عوارض:
+            </div>
+            
+            <table class="recommendation-table">
+                <thead>
+                    <tr>
+                        <th>توصیه برای کاهش عوارض</th>
+                        <th>دارو</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>با غذا مصرف شود، دوز صبحگاهی برای کاهش بی‌خوابی</td>
+                        <td>سرترالین</td>
+                    </tr>
+                    <tr>
+                        <td>مصرف مایعات زیاد، کنترل وضعیت کلیه، ارزیابی حافظه</td>
+                        <td>توپیرامات</td>
+                    </tr>
+                    <tr>
+                        <td>کنترل آزمایش کبد، مانیتورینگ وزن و مو، بررسی پلاکت خون</td>
+                        <td>والپرات</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Add smooth scrolling animation
+        document.querySelectorAll('.drug-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+            card.classList.add('slideUp');
+        });
+        
+        // Add interactive hover effects
+        document.querySelectorAll('.effect-list li').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+        
+        // Add sparkle effect on card hover
+        document.querySelectorAll('.drug-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                createSparkles(this);
+            });
+        });
+        
+        function createSparkles(element) {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.position = 'absolute';
+                    sparkle.style.left = Math.random() * element.offsetWidth + 'px';
+                    sparkle.style.top = Math.random() * element.offsetHeight + 'px';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.animation = 'sparkleUp 1s ease-out forwards';
+                    element.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 100);
+            }
+        }
+        
+        // Add CSS for sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkleUp {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-50px) scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+    </script>
+</body>
+</html>
