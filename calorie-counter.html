@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کالری شمار هوشمند - مسیر شما به سلامتی و تناسب اندام</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --accent-color: #FF9800;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        body {
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .daily-tip {
+            background: linear-gradient(135deg, var(--accent-color), #FF5722);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 20px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        .form-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .food-search {
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .food-search input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .food-search input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .health-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .fasting-timer {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .calorie-counter {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            margin: 1rem 0;
+        }
+
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exercise-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 0.5rem;
+            }
+
+            .welcome-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heartbeat me-2"></i>
+                همراه سلامت
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#"><i class="fas fa-home me-1"></i> خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#"><i class="fas fa-chart-line me-1"></i> گزارش‌ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#"><i class="fas fa-utensils me-1"></i> تغذیه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#"><i class="fas fa-running me-1"></i> ورزش</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="welcome-section">
+            <h1 class="mb-4">به همراه سلامت خوش آمدید</h1>
+            <p class="lead">برنامه جامع کاهش وزن و تغذیه هوشمند</p>
+        </div>
+
+        <div class="daily-tip">
+            <h4><i class="fas fa-lightbulb me-2"></i>نکته روز</h4>
+            <p id="dailyTipText">در حال بارگذاری نکته روزانه...</p>
+            </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                </div>
+                    <h3>محاسبه کالری</h3>
+                    <p>محاسبه دقیق کالری مورد نیاز روزانه بر اساس مشخصات فردی</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+        </div>
+                    <h3>ثبت وعده‌های غذایی</h3>
+                    <p>ثبت و محاسبه کالری وعده‌های غذایی روزانه</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="mb-4">اطلاعات شخصی</h2>
+            <form id="userInfoForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">نام و نام خانوادگی</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">شماره موبایل</label>
+                        <input type="tel" class="form-control" required>
+            </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">سن</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">جنسیت</label>
+                        <select class="form-select" required>
+                            <option value="">انتخاب کنید</option>
+                            <option value="male">مرد</option>
+                            <option value="female">زن</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">قد (سانتی‌متر)</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">وزن (کیلوگرم)</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">سطح فعالیت فیزیکی</label>
+                        <select class="form-select" required>
+                            <option value="">انتخاب کنید</option>
+                            <option value="sedentary">کاملاً بی‌تحرک</option>
+                            <option value="light">کمی فعال</option>
+                            <option value="moderate">متوسط</option>
+                            <option value="active">فعال</option>
+                            <option value="very_active">خیلی فعال</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">ثبت اطلاعات</button>
+            </form>
+        </div>
+
+        <div class="health-warning">
+            <h4><i class="fas fa-exclamation-triangle me-2"></i>توجه</h4>
+            <p>قبل از شروع هر برنامه کاهش وزن، با پزشک خود مشورت کنید.</p>
+        </div>
+
+        <div class="fasting-timer">
+            <h3>زمان‌سنج فستینگ</h3>
+            <div class="timer-display" id="fastingTimer">00:00:00</div>
+            <button class="btn btn-light" id="startFasting">شروع فستینگ</button>
+        </div>
+
+        <div class="calorie-counter">
+            <h3>شمارنده کالری</h3>
+            <div class="food-search">
+                <input type="text" class="form-control" placeholder="نام غذا را جستجو کنید...">
+            </div>
+            <div class="progress-section">
+                <h4>کالری مصرفی امروز</h4>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2">0 / 2000 کالری</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Daily Tips
+        const dailyTips = [
+            "آب کافی بنوشید! حداقل 8 لیوان آب در روز برای کاهش وزن ضروری است.",
+            "وعده‌های غذایی را منظم مصرف کنید تا متابولیسم بدن تنظیم شود.",
+            "ورزش منظم را فراموش نکنید. حداقل 30 دقیقه پیاده‌روی روزانه توصیه می‌شود.",
+            "خواب کافی داشته باشید. 7-8 ساعت خواب شبانه برای کاهش وزن ضروری است.",
+            "از مصرف قند و شکر پرهیز کنید و به جای آن از میوه‌های تازه استفاده کنید."
+        ];
+
+        function updateDailyTip() {
+            const tipElement = document.getElementById('dailyTipText');
+            const randomTip = dailyTips[Math.floor(Math.random() * dailyTips.length)];
+            tipElement.textContent = randomTip;
+        }
+
+        // Fasting Timer
+        let fastingInterval;
+        let fastingStartTime;
+
+        document.getElementById('startFasting').addEventListener('click', function() {
+            if (this.textContent === 'شروع فستینگ') {
+                fastingStartTime = new Date();
+                this.textContent = 'پایان فستینگ';
+                fastingInterval = setInterval(updateFastingTimer, 1000);
+            } else {
+                clearInterval(fastingInterval);
+                this.textContent = 'شروع فستینگ';
+                document.getElementById('fastingTimer').textContent = '00:00:00';
+            }
+        });
+
+        function updateFastingTimer() {
+            const now = new Date();
+            const diff = now - fastingStartTime;
+            const hours = Math.floor(diff / 3600000);
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            
+            document.getElementById('fastingTimer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDailyTip();
+            setInterval(updateDailyTip, 86400000); // Update tip every 24 hours
+        });
+    </script>
+</body>
+</html> 
